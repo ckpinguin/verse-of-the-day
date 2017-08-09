@@ -36,10 +36,3 @@ jobs:
       # run tests!
       - run: yarn test
 
-    deployment:
-      staging:
-        branch: master
-        heroku:
-          appname: our-daily-bread
-
-
