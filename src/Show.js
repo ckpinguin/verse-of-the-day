@@ -23,6 +23,8 @@ export default function Show(props) {
     // style.display = 'none';
     
     return (
-            <span style={style} {...props} />
+            <div style={style} >
+                {props.children}
+            </div>
     );
 }
