@@ -9,7 +9,7 @@ class DatePickerContainer extends Component {
         super(props);
         this.date = props.date;
     }
-    onChanges = (changes) => {
+    onChanges(changes) {
         const formattedDate = DateHelper.formatDate(this.date, '-');
         const parts = formattedDate.split('-');
         if (parts.length === 3) {
@@ -21,7 +21,7 @@ class DatePickerContainer extends Component {
         }
     }
 
-    incrementField = (field) => {
+    incrementField(field) {
         const maxValue = DateHelper.maxValues[field];
         const minValue = DateHelper.minValues[field];
         this.formDate[field] = (this.formDate[field] + 1 > maxValue)
@@ -30,7 +30,7 @@ class DatePickerContainer extends Component {
         this.emitDateChange();
     }
 
-    decrementField = (field) => {
+    decrementField(field) {
         const maxValue = DateHelper.maxValues[field];
         const minValue = DateHelper.minValues[field];
         this.formDate[field] = (this.formDate[field] - 1 < minValue)
@@ -39,7 +39,7 @@ class DatePickerContainer extends Component {
         this.emitDateChange();
     }
 
-    reset = () => {
+    reset() {
         this.formDate = {
             year: DateHelper.minValues['year'],
             month: DateHelper.minValues['month'],
@@ -48,13 +48,13 @@ class DatePickerContainer extends Component {
         this.emitDateChange();
     }
 
-    emitDateChange = () => {
+    emitDateChange() {
         // const date = new Date(this.formDate.year, this.formDate.month - 1, this.formDate.day);
         // console.log('emitting dateChange with: ', date);
         // this.dateChange.emit(date);
     }
 
-    changeDate = (field, inputValue) => {
+    changeDate(field, inputValue) {
         let value = Math.max(inputValue, 0);
         value = Math.min(value, DateHelper.maxValues[field]);
         // console.log('changing ', field, ' to: ', value);
@@ -62,7 +62,7 @@ class DatePickerContainer extends Component {
         // this.emitDateChange();
     }
 
-    render = () => {
+    render() {
         const dateObj = DateHelper.getDateObj(this.date);
         return (
             <div>

@@ -7,18 +7,17 @@ import ToggleDisplay from './ToggleDisplay';
 import DateHelper from './DateHelper';
 import DatePickerContainer from './DatePickerContainer';
 
-class App extends Component {
-    static title = 'Our daily bread';
-    urlBase = 'https://logos.com/media/VerseOfTheDay/768x432/';
-
+export default class App extends Component {
     constructor(props) {
         super(props);
+        this.title = 'Our daily bread';
+        this.urlBase = 'https://logos.com/media/VerseOfTheDay/768x432/';
         this.state = {
             date: DateHelper.randomDate()
         };
     }
 
-    render = () => {
+    render()  {
         const formattedDate = DateHelper.formatDate(this.state.date, '-');
         const url = this.urlBase + formattedDate + '.png';
         const date = this.state.date;
@@ -39,4 +38,3 @@ class App extends Component {
         );
     }
 }
-export default App;

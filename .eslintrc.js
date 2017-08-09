@@ -59,7 +59,7 @@ module.exports = {
         ],
         "react/jsx-boolean-value": 0,
         "jsx-quotes": 1,
-        "react/jsx-no-undef": 1,
+        "react/jsx-no-undef": 0,
         "react/jsx-uses-react": 1,
         "react/jsx-uses-vars": 1,
         "react/no-did-mount-set-state": 0,
