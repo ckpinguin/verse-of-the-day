@@ -36,7 +36,7 @@ jobs:
       # run tests!
       - run: yarn test
 
-      - deployment:
+      deployment:
           staging:
             branch: master
             heroku:
