@@ -8,7 +8,7 @@ import DateHelper from './DateHelper';
 import DatePickerContainer from './DatePickerContainer';
 
 class App extends Component {
-    title = 'Our daily bread';
+    static title = 'Our daily bread';
     urlBase = 'https://logos.com/media/VerseOfTheDay/768x432/';
 
     constructor(props) {
