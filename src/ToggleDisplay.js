@@ -6,26 +6,9 @@ import PropTypes from 'prop-types';
  * This component was copied deliberately from https://github.com/ccnokes/react-toggle-display
  */
 
-ToggleDisplay.propTypes = {
-	tag: PropTypes.string,
-	hide: PropTypes.bool,
-	show: PropTypes.bool,
-	if: PropTypes.bool
-}
+const isDefined = (val) => val != null;
 
-ToggleDisplay.defaultProps = {
-	tag: 'span'
-};
-
-// used props to remove in order to prevent our 
-// props from being leaked down onto the children
-const propsToRemove = Object.keys(ToggleDisplay.propTypes);
-
-function isDefined(val) {
-	return val != null;
-}
-
-function shouldHide(props) {
+const shouldHide = (props) => {
 	if (isDefined(props.show)) {
 		return !props.show;
 	}
@@ -35,7 +18,7 @@ function shouldHide(props) {
 	return false;
 }
 
-function pickProps(props) {
+const pickProps = (props) => {
 	const newProps = Object.assign({}, props);
 	propsToRemove.forEach(prop => {
 		if(prop in newProps) {
@@ -45,7 +28,7 @@ function pickProps(props) {
 	return newProps;
 }
 
-export default function ToggleDisplay(props) {
+const ToggleDisplay = (props) => {
 	if (props.if === false) {
 		return null;
 	}
@@ -63,3 +46,18 @@ export default function ToggleDisplay(props) {
 		<Tag style={style} {...newProps} />
 	);
 }
+ToggleDisplay.propTypes = {
+	tag: PropTypes.string,
+	hide: PropTypes.bool,
+	show: PropTypes.bool,
+	if: PropTypes.bool
+}
+
+ToggleDisplay.defaultProps = {
+	tag: 'span'
+};
+export default ToggleDisplay;
+
+// used props to remove in order to prevent our 
+// props from being leaked down onto the children
+const propsToRemove = Object.keys(ToggleDisplay.propTypes);

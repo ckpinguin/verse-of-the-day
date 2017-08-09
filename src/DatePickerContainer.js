@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import DatePicker from './DatePicker';
+import DateHelper from './DateHelper';
 
 class DatePickerContainer extends Component {
-    ngOnChanges(changes) {
-        const formattedDate = DateHelper.formatDate(this.date);
+    constructor(props) {
+        super(props);
+        this.date = props.date;
+    }
+    onChanges = (changes) => {
+        const formattedDate = DateHelper.formatDate(this.date, '-');
         const parts = formattedDate.split('-');
         if (parts.length === 3) {
             this.formDate = {
@@ -13,7 +21,7 @@ class DatePickerContainer extends Component {
         }
     }
 
-    incrementField(field) {
+    incrementField = (field) => {
         const maxValue = DateHelper.maxValues[field];
         const minValue = DateHelper.minValues[field];
         this.formDate[field] = (this.formDate[field] + 1 > maxValue)
@@ -22,7 +30,7 @@ class DatePickerContainer extends Component {
         this.emitDateChange();
     }
 
-    decrementField(field) {
+    decrementField = (field) => {
         const maxValue = DateHelper.maxValues[field];
         const minValue = DateHelper.minValues[field];
         this.formDate[field] = (this.formDate[field] - 1 < minValue)
@@ -31,7 +39,7 @@ class DatePickerContainer extends Component {
         this.emitDateChange();
     }
 
-    reset() {
+    reset = () => {
         this.formDate = {
             year: DateHelper.minValues['year'],
             month: DateHelper.minValues['month'],
@@ -40,32 +48,32 @@ class DatePickerContainer extends Component {
         this.emitDateChange();
     }
 
-    emitDateChange() {
-        const date = new Date(this.formDate.year, this.formDate.month - 1, this.formDate.day);
+    emitDateChange = () => {
+        // const date = new Date(this.formDate.year, this.formDate.month - 1, this.formDate.day);
         // console.log('emitting dateChange with: ', date);
-        this.dateChange.emit(date);
+        // this.dateChange.emit(date);
     }
 
-    changeDate(field, inputValue) {
+    changeDate = (field, inputValue) => {
         let value = Math.max(inputValue, 0);
         value = Math.min(value, DateHelper.maxValues[field]);
         // console.log('changing ', field, ' to: ', value);
         this.formDate[field] = value;
-        this.emitDateChange();
+        // this.emitDateChange();
     }
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
 
+    render = () => {
+        const dateObj = DateHelper.getDateObj(this.date);
+        return (
+            <div>
+                <DatePicker year={dateObj.year} month={dateObj.month} day={dateObj.day}/>
+            </div>
+        );
+    }
+
+}
 export default DatePickerContainer;
+
+DatePicker.propTypes = {
+    date: PropTypes.object
+};

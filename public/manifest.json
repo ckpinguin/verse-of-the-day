@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Verse of the day",
+  "name": "Verse of the day, our daily bread",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import Show from './Show';
 import ToggleDisplay from './ToggleDisplay';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-            <ToggleDisplay show>
-                <img src={logo} className="App-logo" alt="logo" />
-            </ToggleDisplay>
-          <Show if={true}>
-            <h2>Welcome to React</h2>
-          </Show>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+import DateHelper from './DateHelper';
+import DatePickerContainer from './DatePickerContainer';
 
+class App extends Component {
+    title = 'Our daily bread';
+    urlBase = 'https://logos.com/media/VerseOfTheDay/768x432/';
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: DateHelper.randomDate()
+        };
+    }
+
+    render = () => {
+        const formattedDate = DateHelper.formatDate(this.state.date, '-');
+        const url = this.urlBase + formattedDate + '.png';
+        const date = this.state.date;
+
+        return (
+            <div className="App" >
+                <div className="App-header" >
+                    <ToggleDisplay show>
+                        <img src={url} className="App-logo"
+                            alt="Daily Bread" />
+                    </ToggleDisplay>
+                    <Show if={true} >
+                        <h2>{this.title}</h2>
+                    </Show>
+                </div>
+                <DatePickerContainer date={date}/>
+            </div>
+        );
+    }
+}
 export default App;

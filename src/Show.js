@@ -10,11 +10,7 @@ Usage example:
 </Show>
 */
 
-Show.propTypes = {
-    if: PropTypes.bool
-}
-
-export default function Show(props) {
+const Show = (props) => {
     if (props.if === false) {
         return null;
     }
@@ -28,3 +24,7 @@ export default function Show(props) {
             </div>
     );
 }
+Show.propTypes = {
+    if: PropTypes.bool
+}
+export default Show;
