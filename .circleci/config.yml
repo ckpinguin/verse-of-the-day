@@ -38,9 +38,9 @@ jobs:
 
       - run: yarn build
 
-  deployment:
-    staging:
-      branch: master
-      heroku:
-        appname: our-daily-bread
+      - deploy:
+          staging:
+            branch: master
+            heroku:
+              appname: our-daily-bread
 
