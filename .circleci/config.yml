@@ -6,9 +6,7 @@ workflows:
         - image: circleci/node:7.10
 
       # parallelism: 1
-
       working_directory: ~/repo
-
       steps:
         - checkout
 
