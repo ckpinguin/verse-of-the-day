@@ -38,8 +38,11 @@ jobs:
       # run tests!
       - run: yarn test
 
-      - run: yarn build
+      #- run: yarn build
 
+      # beware, this script does not seem to work (permission issue on unpacking heroku)
+      # It might anyway be unnecessary, because "git push heroku master" already triggers
+      # anything we need on heroku
       - run: bash .circleci/setup-heroku.sh
       - add_ssh_keys:
           fingerprints:
@@ -48,7 +51,12 @@ jobs:
           name: Deploy Master to Heroku
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              git push heroku master
+              mkdir to_push
+              cp package.json to_push
+              cp -R build to_push
+              cd to_push
+
+              git subtree push --prefix to_push heroku master -f
               # heroku run python manage.py deploy
               # heroku restart
             fi
