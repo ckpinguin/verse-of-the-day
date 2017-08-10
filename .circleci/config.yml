@@ -1,66 +1,57 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:7.10
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
+workflows:
+  version: 2
+  jobs:
+    build:
+      docker:
+        - image: circleci/node:7.10
 
-    # parallelism: 1
+      # parallelism: 1
 
-    working_directory: ~/repo
+      working_directory: ~/repo
 
-    steps:
-      - checkout
+      steps:
+        - checkout
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+        # Download and cache dependencies
+        - restore_cache:
+            keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
-      - run: yarn install
+        - run: yarn install
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run tests!
-      - run: yarn test
+        - save_cache:
+            paths:
+              - node_modules
+            key: v1-dependencies-{{ checksum "package.json" }}
+          
+        # run tests!
+        - run: yarn test
 
-      #- run: yarn build
+        #- run: yarn build
 
-      # beware, this script does not seem to work (permission issue on unpacking heroku)
-      # It might anyway be unnecessary, because "git push heroku master" already triggers
-      # anything we need on heroku
-      - run: bash .circleci/setup-heroku.sh
-      - add_ssh_keys:
-          fingerprints:
-            - "48:a0:87:54:ca:75:32:12:c6:9e:a2:77:a4:7a:08:a4"
-      - deploy:
-          name: Deploy Master to Heroku
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              npm run build
-              mkdir to_push
-              cp package.json server.js to_push
-              cp -R build to_push
-              git config --global user.email "ckpinguin@circleci.com"
-              git config --global user.name "Chrigi"
-              git add to_push
-              git commit -m "deploy"
-              git push heroku `git subtree split --prefix to_push master`:master --force
-              # git subtree push --prefix to_push heroku master
-              # heroku run python manage.py deploy
-              # heroku restart
-            fi
+        # beware, this script does not seem to work (permission issue on unpacking heroku)
+        # It might anyway be unnecessary, because "git push heroku master" already triggers
+        # anything we need on heroku
+        - run: bash .circleci/setup-heroku.sh
+        - add_ssh_keys:
+            fingerprints:
+              - "48:a0:87:54:ca:75:32:12:c6:9e:a2:77:a4:7a:08:a4"
+        - deploy:
+            name: Deploy Master to Heroku
+            command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                npm run build
+                mkdir to_push
+                cp package.json server.js to_push
+                cp -R build to_push
+                git config --global user.email "ckpinguin@circleci.com"
+                git config --global user.name "Chrigi"
+                git add to_push
+                git commit -m "deploy"
+                git push heroku `git subtree split --prefix to_push master`:master --force
+                # git subtree push --prefix to_push heroku master
+                # heroku run python manage.py deploy
+                # heroku restart
+              fi
