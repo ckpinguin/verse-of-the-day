@@ -8,13 +8,23 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-  
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - save_cache:
+          key: v1-repo-{{ checksum ".circle-sha" }}
+          paths:
+            - ~/repo
+
   get_dependencies:
     docker:
       - image: circleci/node:7.10
     # parallelism: 1
     working_directory: ~/repo
     steps:
+     - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
@@ -34,6 +44,9 @@ jobs:
     steps:
       - restore_cache:
           keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
             - v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
 
@@ -49,6 +62,9 @@ jobs:
       # It might anyway be unnecessary, because "git push heroku master" already triggers
       # anything we need on heroku
       - run: bash .circleci/setup-heroku.sh
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
