@@ -92,9 +92,8 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
       - restore_cache:
-          paths:
-            - build
-          key: v1-build-{{ checksum ".circle-sha" }}
+          keys:
+            - v1-build-{{ checksum ".circle-sha" }}
       - run: bash .circleci/setup-heroku.sh
       - add_ssh_keys:
           fingerprints:
