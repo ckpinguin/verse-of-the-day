@@ -56,7 +56,7 @@ jobs:
               cp -R build to_push
               cd to_push
 
-              git subtree push --prefix to_push heroku master -f
+              git subtree push --prefix to_push heroku master
               # heroku run python manage.py deploy
               # heroku restart
             fi
