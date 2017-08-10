@@ -48,9 +48,9 @@ jobs:
           fingerprints:
             - "48:a0:87:54:ca:75:32:12:c6:9e:a2:77:a4:7a:08:a4"
       - deploy:
-          name: Deploy Master to Heroku
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+          name: Deploy Production to Heroku
+          command:
+            if [ "${CIRCLE_BRANCH}" == "production" ]; then
               npm run build
               mkdir to_push
               cp package.json server.js to_push
