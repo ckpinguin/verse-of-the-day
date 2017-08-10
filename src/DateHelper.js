@@ -42,5 +42,5 @@ const DateHelper = {
     zeroFill: (i) => {
         return (i < 10 ? '0' : '') + i;
     }
-}
+};
 export default DateHelper;
