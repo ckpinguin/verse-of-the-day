@@ -2,7 +2,8 @@
   "name": "verse-of-the-day",
   "version": "0.1.0",
   "engines": {
-    "node": "7.10.1"
+    "node": "7.10.1",
+    "npm": "5.3.0"
   },
   "private": true,
   "scripts": {
