@@ -59,7 +59,7 @@ jobs:
               git config --global user.name "Chrigi"
               git add to_push
               git commit -m "deploy"
-              git push heroku `git subtree split --prefix to_push master`:production --force
+              git push heroku `git subtree split --prefix to_push master`:master --force
               # git subtree push --prefix to_push heroku master
               # heroku run python manage.py deploy
               # heroku restart
