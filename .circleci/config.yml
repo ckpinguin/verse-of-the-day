@@ -73,10 +73,6 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
       - run: yarn build
-      - save_cache:
-          paths:
-            - build
-          key: v1-build-{{ checksum ".circle-sha" }}
   deploy:
     docker:
       - image: circleci/node:7.10
@@ -95,6 +91,10 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
+      - restore_cache:
+          paths:
+            - build
+          key: v1-build-{{ checksum ".circle-sha" }}
       - run: bash .circleci/setup-heroku.sh
       - add_ssh_keys:
           fingerprints:
