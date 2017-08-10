@@ -56,6 +56,7 @@ jobs:
               cp package.json server.js to_push
               cp -R build to_push
               git config --global user.email "ckpinguin@circleci.com"
+              git config --global user.name "Chrigi"
               git add to_push
               git commit -m "deploy"
               # cd to_push
