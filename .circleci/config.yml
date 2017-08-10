@@ -56,7 +56,6 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
 
-
   build:
     docker:
       - image: circleci/node:7.10
@@ -73,6 +72,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
       - run: yarn build
+
   deploy:
     docker:
       - image: circleci/node:7.10
@@ -103,7 +103,7 @@ jobs:
           name: Deploy Master to Heroku
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              npm run build
+              # npm run build
               mkdir to_push
               cp package.json server.js to_push
               cp -R build to_push
@@ -129,8 +129,11 @@ workflows:
           requires:
             - checkout_code
             - get_dependencies
-      - deploy:
+      - build:
           requires:
             - checkout_code
             - get_dependencies
+      - deploy:
+          requires:
+            - build
             - test
