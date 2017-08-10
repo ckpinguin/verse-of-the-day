@@ -1,13 +1,20 @@
-version: 2
+version: 2.0
+
 jobs:
-  build:
+  checkout_code:
     docker:
       - image: circleci/node:7.10
     # parallelism: 1
     working_directory: ~/repo
     steps:
       - checkout
-    # Download and cache dependencies
+  
+  get_dependencies:
+    docker:
+      - image: circleci/node:7.10
+    # parallelism: 1
+    working_directory: ~/repo
+    steps:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
@@ -19,15 +26,32 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
           
-      # run tests!
+  test:
+    docker:
+      - image: circleci/node:7.10
+    # parallelism: 1
+    working_directory: ~/repo
+    steps:
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
 
       #- run: yarn build
 
+  deploy:
+    docker:
+      - image: circleci/node:7.10
+    # parallelism: 1
+    working_directory: ~/repo
+    steps:
       # beware, this script does not seem to work (permission issue on unpacking heroku)
       # It might anyway be unnecessary, because "git push heroku master" already triggers
       # anything we need on heroku
       - run: bash .circleci/setup-heroku.sh
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
       - add_ssh_keys:
           fingerprints:
             - "48:a0:87:54:ca:75:32:12:c6:9e:a2:77:a4:7a:08:a4"
@@ -48,3 +72,21 @@ jobs:
               # heroku run python manage.py deploy
               # heroku restart
             fi
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - checkout_code
+      - get_dependencies:
+          requires:
+            - checkout_code
+      - test:
+          requires:
+            - checkout_code
+            - get_dependencies
+      - deploy:
+          requires:
+            - checkout_code
+            - get_dependencies
+            - test
