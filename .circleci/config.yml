@@ -22,7 +22,7 @@ jobs:
     # parallelism: 1
     working_directory: ~/repo
     steps:
-     - restore_cache:
+      - restore_cache:
           keys:
             - v1-repo-{{ checksum ".circle-sha" }}
       - restore_cache:
@@ -50,8 +50,20 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
 
-      #- run: yarn build
 
+  build:
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn build
+      - save_cache:
+          paths:
+            - build
+          key: v1-build-{{ checksum ".circle-sha" }}
   deploy:
     docker:
       - image: circleci/node:7.10
