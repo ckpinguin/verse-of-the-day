@@ -86,7 +86,6 @@ jobs:
       # beware, this script does not seem to work (permission issue on unpacking heroku)
       # It might anyway be unnecessary, because "git push heroku master" already triggers
       # anything we need on heroku
-      - run: bash .circleci/setup-heroku.sh
       - run:
           name: save SHA to a file
           command: echo $CIRCLE_SHA1 > .circle-sha
@@ -96,6 +95,7 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
+      - run: bash .circleci/setup-heroku.sh
       - add_ssh_keys:
           fingerprints:
             - "48:a0:87:54:ca:75:32:12:c6:9e:a2:77:a4:7a:08:a4"
