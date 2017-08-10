@@ -15,16 +15,16 @@ const Show = (props) => {
         return null;
     }
 
-    let style = {};
+    const style = {};
     // style.display = 'none';
     
     return (
-            <div style={style} >
-                {props.children}
-            </div>
+        <div style={style} >
+            {props.children}
+        </div>
     );
-}
+};
 Show.propTypes = {
     if: PropTypes.bool
-}
+};
 export default Show;

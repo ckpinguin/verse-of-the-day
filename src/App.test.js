@@ -1,19 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import App from './App';
 
-it('renders shallow', () => {
-    const wrapper = shallow(<App />);
-    const welcome = <h2>Our daily bread</h2>;
-    expect(wrapper.contains(welcome)).toEqual(true);
-    expect(wrapper).toContainReact(welcome);
-    return false;
+describe('<App />', () => {
+    it('calls componentDidMount (just for example)', () => {
+        App.prototype.componentDidMount = jest.fn();
+        const wrapper = mount(<App />);
+        // const instance = wrapper.instance();
+        expect(App.prototype.componentDidMount).toHaveBeenCalled();
+    });
+    it('renders shallow', () => {
+        const wrapper = shallow(<App />);
+        const welcome = <h2>Our daily bread</h2>;
+        // expect(wrapper.contains(welcome)).toEqual(true);
+        // simpler version for this:
+        expect(wrapper).toContainReact(welcome);
+    });
+    it('renders without crashing', () => {
+        const div = document.createElement('div');
+        ReactDOM.render(<App />, div);
+    });    
 });
-it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
-});
-
-

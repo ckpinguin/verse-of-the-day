@@ -9,52 +9,50 @@ import PropTypes from 'prop-types';
 const isDefined = (val) => val != null;
 
 const shouldHide = (props) => {
-	if (isDefined(props.show)) {
-		return !props.show;
-	}
-	else if (isDefined(props.hide)) {
-		return props.hide;
-	}
-	return false;
-}
+    if (isDefined(props.show)) {
+        return !props.show;
+    } else if (isDefined(props.hide)) {
+        return props.hide;
+    }
+    return false;
+};
 
 const pickProps = (props) => {
-	const newProps = Object.assign({}, props);
-	propsToRemove.forEach(prop => {
-		if(prop in newProps) {
-			delete newProps[prop];
-		}
-	});
-	return newProps;
-}
+    const newProps = Object.assign({}, props);
+    propsToRemove.forEach(prop => {
+        if(prop in newProps) {
+            delete newProps[prop];
+        }
+    });
+    return newProps;
+};
 
 const ToggleDisplay = (props) => {
-	if (props.if === false) {
-		return null;
-	}
+    if (props.if === false) {
+        return null;
+    }
 
-	let style = {};
-	if(shouldHide(props)) {
-		style.display = 'none';
-	}
+    let style = {};
+    if(shouldHide(props)) {
+        style.display = 'none';
+    }
 
-	const Tag = props.tag;
-	// prevent our props from being leaked down onto the children
-	const newProps = pickProps(props);
+    const Tag = props.tag;
+    // prevent our props from being leaked down onto the children
+    const newProps = pickProps(props);
 
-	return (
-		<Tag style={style} {...newProps} />
-	);
-}
+    return (
+        <Tag style={style} {...newProps} />
+    );
+};
 ToggleDisplay.propTypes = {
-	tag: PropTypes.string,
-	hide: PropTypes.bool,
-	show: PropTypes.bool,
-	if: PropTypes.bool
-}
-
+    tag: PropTypes.string,
+    hide: PropTypes.bool,
+    show: PropTypes.bool,
+    if: PropTypes.bool
+};
 ToggleDisplay.defaultProps = {
-	tag: 'span'
+    tag: 'span'
 };
 export default ToggleDisplay;
 

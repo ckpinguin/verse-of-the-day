@@ -16,6 +16,9 @@ export default class App extends Component {
             date: DateHelper.randomDate()
         };
     }
+    
+    componentDidMount() {
+    }
 
     render()  {
         const formattedDate = DateHelper.formatDate(this.state.date, '-');
