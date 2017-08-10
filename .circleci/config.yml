@@ -51,7 +51,7 @@ jobs:
           name: Deploy Master to Heroku
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              npm build
+              npm run build
               mkdir to_push
               cp package.json to_push
               cp -R build to_push
