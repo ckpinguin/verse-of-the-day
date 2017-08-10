@@ -5,4 +5,4 @@ import DatePicker from './DatePicker';
 it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<DatePicker />, div);
-});
+}); 
