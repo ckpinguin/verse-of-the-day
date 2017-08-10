@@ -1,6 +1,9 @@
 {
   "name": "verse-of-the-day",
   "version": "0.1.0",
+  "engines": {
+    "node": "7.10.1"
+  },
   "private": true,
   "scripts": {
     "start": "react-scripts start",
