@@ -72,6 +72,10 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
       - run: yarn build
+      - save_cache:
+          paths:
+            - build
+          key: v1-build-{{ checksum ".circle-sha" }}
 
   deploy:
     docker:
