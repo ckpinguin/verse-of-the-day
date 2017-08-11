@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Show from './Show';
-import ToggleDisplay from './ToggleDisplay';
+import Show from './components/Show/Show';
+import ToggleDisplay from './components/ToggleDisplay/ToggleDisplay';
 
-import DateHelper from './DateHelper';
-import DatePickerContainer from './DatePickerContainer';
+import DateHelper from './shared/DateHelper';
+import DatePickerContainer from './components/DatePickerContainer/DatePickerContainer';
 
 export default class App extends Component {
     constructor(props) {

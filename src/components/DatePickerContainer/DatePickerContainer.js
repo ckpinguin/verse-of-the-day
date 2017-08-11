@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import DatePicker from './DatePicker';
-import DateHelper from './DateHelper';
+import DatePicker from '../DatePicker/DatePicker';
+import DateHelper from '../../shared/DateHelper';
 
 class DatePickerContainer extends Component {
     constructor(props) {

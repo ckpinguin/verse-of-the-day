@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DatePickerContainer from './DatePickerContainer';
-import DateHelper from './DateHelper';
+import DateHelper from '../../shared/DateHelper';
 
 describe('DatePickerContainer', () => {
     it('renders without crashing', () => {
