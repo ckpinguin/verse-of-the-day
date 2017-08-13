@@ -5,12 +5,16 @@
     "node": "7.10.1",
     "npm": "5.3.0"
   },
+  "jest": {
+    "collectCoverageFrom": ["src/**/*.js", "!**/registerServiceWorker.js", "!**/node_modules/**", "!**/vendor/**"]
+  },
   "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:cov": "npm test -- --coverage",
+    "test:update-snaps": "yarn test -- -u",
     "eject": "react-scripts eject",
     "server:prod": "cross-env NODE_ENV=production node server.js",
     "storybook": "start-storybook -p 6006",

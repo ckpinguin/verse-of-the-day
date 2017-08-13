@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="App-header"
+  >
+    <span
+      style={Object {}}
+    >
+      <img
+        alt="Daily Bread"
+        className="App-logo"
+        src="https://logos.com/media/VerseOfTheDay/768x432/2017-08-01.png"
+      />
+    </span>
+    <div
+      style={Object {}}
+    >
+      <h2>
+        Our daily bread
+      </h2>
+    </div>
+  </div>
+  <div>
+    <p>
+      This is DatePicker stub with date: 
+      1.8.2017
+    </p>
+  </div>
+</div>
+`;

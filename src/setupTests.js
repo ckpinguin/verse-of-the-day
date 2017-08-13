@@ -1,4 +1,3 @@
-
 import 'jest-enzyme';
 
 const localStorageMock = {

@@ -15,14 +15,14 @@ export default class App extends Component {
         this.title = 'Our daily bread';
         this.urlBase = 'https://logos.com/media/VerseOfTheDay/768x432/';
         this.state = {
-            date: DateHelper.randomDate()
+            date: props.date ? props.date : DateHelper.randomDate()
         };
     }
     
     componentDidMount() {
     }
 
-    render()  {
+    render() {
         const formattedDate = DateHelper.formatDate(this.state.date, '-');
         const url = this.urlBase + formattedDate + '.png';
         const date = this.state.date;

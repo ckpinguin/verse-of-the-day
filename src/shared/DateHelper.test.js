@@ -9,7 +9,7 @@ describe('DateHelper', () => {
     it('creates specific random date between 01.01.2014 and 31.12.2017', () => {
         // beware of 0-based month!
         const date = DateHelper.randomDateBetween(new Date(2014, 0, 1), new Date(2017, 11, 31));
-        console.log(DateHelper.getDateObj(date));
+        // console.log(DateHelper.getDateObj(date));
         expect(_.isObject(date));
         expect(date.getFullYear()).toBeLessThanOrEqual(2017);
         expect(date.getFullYear()).toBeGreaterThanOrEqual(2014);

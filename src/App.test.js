@@ -1,7 +1,7 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
 import { shallow, mount } from 'enzyme'; 
+import renderer from 'react-test-renderer';
 
 import App from './App';
 
@@ -24,4 +24,16 @@ describe('<App />', () => {
         //ReactDOM.render(<App />, div);
         ReactTestUtils.renderIntoDocument(<App/>);
     });    
+    it('mounts successfully', () => {
+        const wrapper = mount(<App />);
+        const welcome = <h2>Our daily bread</h2>;        
+        expect(wrapper).toContainReact(welcome);
+    });
+    it('did not change UI compared to recorded snapshot', () => {
+        const date = new Date(2017, 7, 1);
+        const component = renderer.create(<App date={date}/>);
+        // component.state = { date: new Date(2017, 7, 1) };
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
 });
