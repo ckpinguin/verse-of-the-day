@@ -28,8 +28,8 @@ const DateHelper = {
     getDateObj: (date) => {
         return {
             year: date.getFullYear(),
-            month: date.getMonth() +1,
-            day: DateHelper.zeroFill(date.getDate())
+            month: date.getMonth() +1, // month is 0-based!
+            day: date.getDate()
         };
     },
 

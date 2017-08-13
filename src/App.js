@@ -8,6 +8,8 @@ import DateHelper from './shared/DateHelper';
 import DatePickerContainer from './components/DatePickerContainer/DatePickerContainer';
 
 export default class App extends Component {
+    // API-Key for bibleserver.com API with https://our-daily-bread.herokuapp.com/
+    static bibleServerAPIKey = 'ad9b36e57ef40242a89170d6f54322c68d6ed86b';
     constructor(props) {
         super(props);
         this.title = 'Our daily bread';
