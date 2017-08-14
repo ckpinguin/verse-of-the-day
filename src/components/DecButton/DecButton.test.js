@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import ReactTestUtils from 'react-dom/test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 import { shallow, mount } from 'enzyme'; 
 // import renderer from 'react-test-renderer';
 
@@ -15,17 +15,18 @@ describe('<DecButton />', () => {
 
     it('allows us to set props', () => {
         const wrapper = mount(<DecButton propOne="foo" />);
-        expect(wrapper.props().propOne).to.equal('foo');
+        expect(wrapper.props().propOne).toEqual('foo');
         wrapper.setProps({ propOne: 'bonka' });
-        expect(wrapper.props().propOne).to.equal('bonka');
+        expect(wrapper.props().propOne).toEqual('bonka');
     });
 
     it('simulates click events', () => {
-        const onClick = jest.fn(() => console.log('clicked!'));       
+        DecButton.prototype.onClick = jest.fn();    
+        const onClick = DecButton.prototype.onClick;
         const wrapper = mount((
             <DecButton onClick={onClick} />
         ));
         wrapper.find('button').simulate('click');
-        expect(onClick.calledOnce).to.equal(true);
+        expect(onClick).toHaveBeenCalled();
     });
 });

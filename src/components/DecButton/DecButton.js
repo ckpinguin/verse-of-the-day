@@ -8,9 +8,7 @@ DecButton.propTypes = {
 };
 function DecButton({ onClick }) {
     return (
-        <div className="DecButton">
-            <button onClick={onClick} />
-        </div>
+        <button className="DecButton" onClick={onClick} />
     );
 }
 export default DecButton;

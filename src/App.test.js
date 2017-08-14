@@ -33,7 +33,7 @@ describe('<App />', () => {
         const date = new Date(2017, 7, 1);
         const component = renderer.create(<App date={date}/>);
         // component.state = { date: new Date(2017, 7, 1) };
-        let tree = component.toJSON();
+        const tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
 });

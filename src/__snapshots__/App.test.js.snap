@@ -45,13 +45,10 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
           onChange={[Function]}
           value={undefined}
         />
-        <div
+        <button
           className="DecButton"
-        >
-          <button
-            onClick={undefined}
-          />
-        </div>
+          onClick={undefined}
+        />
       </div>
     </div>
   </div>
