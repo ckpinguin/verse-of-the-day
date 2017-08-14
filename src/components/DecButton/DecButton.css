@@ -1,0 +1,13 @@
+.DecButton {
+    background: blue;
+}
+
+button {
+    width: 100%;
+    cursor: pointer;
+    padding: 11px 22px 9px 22px;
+    border: 1px solid #ccc;
+    margin: auto;
+    background: Transparent;
+    border-radius: 5px;
+}

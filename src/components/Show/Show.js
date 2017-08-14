@@ -9,8 +9,10 @@ Usage example:
     <LoadMore onClick={this.handleLoadMore} />
 </Show>
 */
-
-const Show = (props) => {
+Show.propTypes = {
+    if: PropTypes.bool
+};
+function Show(props) {
     if (props.if === false) {
         return null;
     }
@@ -23,8 +25,5 @@ const Show = (props) => {
             {props.children}
         </div>
     );
-};
-Show.propTypes = {
-    if: PropTypes.bool
-};
+}
 export default Show;

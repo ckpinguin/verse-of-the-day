@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DatePicker from './DatePicker';
+import NumberChooser from './NumberChooser';
 
-describe('<DatePicker />', () => {
+
+describe('<NumberChooser />', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<DatePicker />, div);
+        ReactDOM.render(<NumberChooser />, div);
     });
 });

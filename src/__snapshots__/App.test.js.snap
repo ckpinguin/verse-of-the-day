@@ -25,10 +25,35 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
     </div>
   </div>
   <div>
-    <p>
-      This is DatePicker stub with date: 
-      1.8.2017
-    </p>
+    <div
+      id="DatePicker"
+    >
+      <p>
+        This is DatePicker stub with date: 
+        1.8.2017
+      </p>
+      <div
+        className="col"
+        name="NumberChooser_year"
+      >
+        <div
+          className="IncButton"
+        >
+          IncButton dummy
+        </div>
+        <input
+          onChange={[Function]}
+          value={undefined}
+        />
+        <div
+          className="DecButton"
+        >
+          <button
+            onClick={undefined}
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

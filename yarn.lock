@@ -44,15 +44,15 @@
     fuse.js "^3.0.1"
     prop-types "^15.5.9"
 
-"@storybook/react@^3.2.3":
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-3.2.3.tgz#4e5aff80b61328288dcf9e3a6b2a2890eab880be"
+"@storybook/react@^3.2.4":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-3.2.4.tgz#096a6afcc29bdd102868c494f4f99a3fec7f34ca"
   dependencies:
     "@storybook/addon-actions" "^3.2.0"
     "@storybook/addon-links" "^3.2.0"
     "@storybook/addons" "^3.2.0"
     "@storybook/channel-postmessage" "^3.2.0"
-    "@storybook/ui" "^3.2.3"
+    "@storybook/ui" "^3.2.4"
     airbnb-js-shims "^1.1.1"
     autoprefixer "^7.1.1"
     babel-core "^6.25.0"
@@ -98,9 +98,9 @@
     webpack-dev-middleware "^1.10.2"
     webpack-hot-middleware "^2.18.0"
 
-"@storybook/ui@^3.2.3":
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-3.2.3.tgz#9579c191a1695d3d5aaabcef93a7a5456d8f19af"
+"@storybook/ui@^3.2.4":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-3.2.4.tgz#a52b10a5f9daaf22570af457ec7c79210b0abcc3"
   dependencies:
     "@storybook/react-fuzzy" "^0.4.0"
     babel-runtime "^6.23.0"
@@ -110,6 +110,7 @@
     global "^4.3.2"
     json-stringify-safe "^5.0.1"
     keycode "^2.1.8"
+    lodash.debounce "4.0.8"
     lodash.pick "^4.4.0"
     lodash.sortby "^4.7.0"
     mantra-core "^1.7.0"
@@ -1396,6 +1397,10 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+bootstrap@^3.3.7:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
 bowser@^1.0.0, bowser@^1.6.0:
   version "1.7.1"
@@ -2868,7 +2873,7 @@ eslint-plugin-react@7.1.0:
     has "^1.0.1"
     jsx-ast-utils "^1.4.1"
 
-eslint-plugin-react@^7.1.0:
+eslint-plugin-react@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.2.0.tgz#25c77a4ec307e3eebb248ea3350960e372ab6406"
   dependencies:
@@ -3987,7 +3992,7 @@ interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
-invariant@2.x.x, invariant@^2.2.0, invariant@^2.2.2:
+invariant@2.x.x, invariant@^2.1.0, invariant@^2.2.0, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -4696,9 +4701,9 @@ jss-global@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/jss-global/-/jss-global-2.0.0.tgz#a162f822f17e5d760151d908bdb41d7f2824c28f"
 
-jss-isolate@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/jss-isolate/-/jss-isolate-4.0.1.tgz#a9fd2ca251a7405a83a6cdc3daab3a496e5ed8bd"
+jss-isolate@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/jss-isolate/-/jss-isolate-4.0.0.tgz#b33eb4f60f6e66fb8fd85f02dc25515c7b271302"
 
 jss-nested@^5.0.0:
   version "5.0.0"
@@ -4723,7 +4728,7 @@ jsx-ast-utils@^2.0.0:
   dependencies:
     array-includes "^3.0.3"
 
-keycode@^2.1.8:
+keycode@^2.1.2, keycode@^2.1.8:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.1.9.tgz#964a23c54e4889405b4861a5c9f0480d45141dfa"
 
@@ -4884,7 +4889,7 @@ lodash.cond@^4.3.0:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/lodash.cond/-/lodash.cond-4.5.2.tgz#f471a1da486be60f6ab955d17115523dd1d255d5"
 
-lodash.debounce@^4.0.8:
+lodash.debounce@4.0.8, lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
@@ -6231,6 +6236,12 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
+prop-types-extra@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/prop-types-extra/-/prop-types-extra-1.0.1.tgz#a57bd4810e82d27a3ff4317ecc1b4ad005f79a82"
+  dependencies:
+    warning "^3.0.0"
+
 prop-types@15.5.8:
   version "15.5.8"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
@@ -6369,6 +6380,22 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-bootstrap@^0.31.2:
+  version "0.31.2"
+  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-0.31.2.tgz#f59184676ecedfc4c572d29ffdd6f9126ea8fe6a"
+  dependencies:
+    babel-runtime "^6.11.6"
+    classnames "^2.2.5"
+    dom-helpers "^3.2.0"
+    invariant "^2.2.1"
+    keycode "^2.1.2"
+    prop-types "^15.5.10"
+    prop-types-extra "^1.0.1"
+    react-overlays "^0.7.0"
+    react-prop-types "^0.4.0"
+    uncontrollable "^4.1.0"
+    warning "^3.0.0"
 
 react-codemirror@^1.0.0:
   version "1.0.0"
@@ -6521,6 +6548,22 @@ react-modal@^1.7.7:
     prop-types "^15.5.7"
     react-dom-factories "^1.0.0"
 
+react-overlays@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.7.0.tgz#531898ff566c7e5c7226ead2863b8cf9fbb5a981"
+  dependencies:
+    classnames "^2.2.5"
+    dom-helpers "^3.2.0"
+    prop-types "^15.5.8"
+    react-prop-types "^0.4.0"
+    warning "^3.0.0"
+
+react-prop-types@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-prop-types/-/react-prop-types-0.4.0.tgz#f99b0bfb4006929c9af2051e7c1414a5c75b93d0"
+  dependencies:
+    warning "^3.0.0"
+
 react-scripts@1.0.11:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-1.0.11.tgz#483d49e27f417ec981ae415a4456120a2a2bc8c1"
@@ -6591,9 +6634,9 @@ react-style-proptype@^3.0.0:
   dependencies:
     prop-types "^15.5.4"
 
-react-styleguidist@^6.0.10:
-  version "6.0.10"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-6.0.10.tgz#33d8e02be91ab900bd546f74535de05b99c3884f"
+react-styleguidist@^6.0.12:
+  version "6.0.12"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-6.0.12.tgz#05909f25b7b30babcbee5c072464d1dd16eeeae2"
   dependencies:
     ast-types "^0.9.12"
     buble "^0.15.2"
@@ -6623,7 +6666,7 @@ react-styleguidist@^6.0.10:
     jss-compose "^4.0.0"
     jss-default-unit "^7.0.0"
     jss-global "^2.0.0"
-    jss-isolate "^4.0.0"
+    jss-isolate "4.0.0"
     jss-nested "^5.0.0"
     leven "^2.1.0"
     listify "^1.0.0"
@@ -7912,6 +7955,12 @@ uid-number@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/uid-number/-/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
 
+uncontrollable@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/uncontrollable/-/uncontrollable-4.1.0.tgz#e0358291252e1865222d90939b19f2f49f81c1a9"
+  dependencies:
+    invariant "^2.1.0"
+
 unherit@^1.0.4:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/unherit/-/unherit-1.1.0.tgz#6b9aaedfbf73df1756ad9e316dd981885840cd7d"
@@ -8287,9 +8336,36 @@ webpack@3.5.1:
     webpack-sources "^1.0.1"
     yargs "^8.0.2"
 
-"webpack@^2.5.1 || ^3.0.0", webpack@^3.5.3:
+"webpack@^2.5.1 || ^3.0.0":
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.3.tgz#e68653963bda146e212832c04a4d8041d2b4b8c8"
+  dependencies:
+    acorn "^5.0.0"
+    acorn-dynamic-import "^2.0.0"
+    ajv "^5.1.5"
+    ajv-keywords "^2.0.0"
+    async "^2.1.2"
+    enhanced-resolve "^3.4.0"
+    escope "^3.6.0"
+    interpret "^1.0.0"
+    json-loader "^0.5.4"
+    json5 "^0.5.1"
+    loader-runner "^2.3.0"
+    loader-utils "^1.1.0"
+    memory-fs "~0.4.1"
+    mkdirp "~0.5.0"
+    node-libs-browser "^2.0.0"
+    source-map "^0.5.3"
+    supports-color "^4.2.1"
+    tapable "^0.2.7"
+    uglifyjs-webpack-plugin "^0.4.6"
+    watchpack "^1.4.0"
+    webpack-sources "^1.0.1"
+    yargs "^8.0.2"
+
+webpack@^3.5.4:
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.4.tgz#5583eb263ed27b78b5bd17bfdfb0eb1b1cd1bf81"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
