@@ -7,10 +7,10 @@ import { shallow, mount } from 'enzyme';
 import DecButton from './DecButton';
 
 describe('<DecButton />', () => {
+
     it('renders without crashing', () => {
-        const onClick = jest.fn(() => console.log('clicked!')); 
         const div = document.createElement('div');
-        ReactDOM.render(<DecButton onClick={onClick}/>, div);
+        ReactDOM.render(<DecButton onClick={() => {}}/>, div);
     });
 
     it('allows us to set props', () => {

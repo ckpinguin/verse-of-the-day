@@ -8,9 +8,7 @@ IncButton.propTypes = {
 };
 function IncButton({ onClick }) {
     return (
-        <div className="IncButton">
-            IncButton dummy
-        </div>
+        <button className="IncButton" onClick={onClick} />
     );
 }
 export default IncButton;

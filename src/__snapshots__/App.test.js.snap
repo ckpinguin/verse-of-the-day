@@ -36,11 +36,10 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         className="col"
         name="NumberChooser_year"
       >
-        <div
+        <button
           className="IncButton"
-        >
-          IncButton dummy
-        </div>
+          onClick={undefined}
+        />
         <input
           onChange={[Function]}
           value={undefined}
