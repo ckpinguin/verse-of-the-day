@@ -37,7 +37,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         name="NumberChooser_year"
       >
         <button
-          className="IncButton"
+          className="IncButton fa fa-arrow-up"
           onClick={undefined}
         />
         <input
@@ -45,7 +45,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
           value={undefined}
         />
         <button
-          className="DecButton"
+          className="DecButton fa fa-arrow-down"
           onClick={undefined}
         />
       </div>

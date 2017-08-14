@@ -8,7 +8,7 @@ IncButton.propTypes = {
 };
 function IncButton({ onClick }) {
     return (
-        <button className="IncButton" onClick={onClick} />
+        <button className="IncButton fa fa-arrow-up" onClick={onClick} />
     );
 }
 export default IncButton;

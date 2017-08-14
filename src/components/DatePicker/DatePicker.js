@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './DatePicker.css';
+
 import NumberChooser from '../NumberChooser/NumberChooser';
 
 DatePicker.propTypes = {

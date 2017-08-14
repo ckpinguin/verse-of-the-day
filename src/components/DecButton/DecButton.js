@@ -8,7 +8,7 @@ DecButton.propTypes = {
 };
 function DecButton({ onClick }) {
     return (
-        <button className="DecButton" onClick={onClick} />
+        <button className="DecButton fa fa-arrow-down" onClick={onClick} />
     );
 }
 export default DecButton;
