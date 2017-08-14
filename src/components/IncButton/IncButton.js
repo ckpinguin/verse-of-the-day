@@ -10,7 +10,7 @@ IncButton.propTypes = {
 };
 function IncButton({ onClick }) {
     return (
-        <button className="IncButton fa fa-arrow-up" style={{ background: debug && 'orange'}} onClick={onClick} />
+        <button className="fa fa-arrow-up" style={{ background: debug && 'orange'}} onClick={onClick} />
     );
 }
 export default IncButton;

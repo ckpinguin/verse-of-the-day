@@ -1,9 +1,8 @@
-.datepicker {
+.layout {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     float: left;
     width: 220px;
     top: 27px;
-    left: 0;
 }
