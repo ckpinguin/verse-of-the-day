@@ -7,6 +7,7 @@ import 'font-awesome/css/font-awesome.css';
 import './index.css';
 
 import debug from './debug';
+
 import App from './App';
 
 ReactDOM.render(<App />, document.getElementById('root'));

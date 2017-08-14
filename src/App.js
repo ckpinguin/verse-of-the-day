@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import debug from './debug';
+
+import './App.css';
+
 import Show from './components/Show/Show';
 import ToggleDisplay from './components/ToggleDisplay/ToggleDisplay';
-
 import DateHelper from './shared/DateHelper';
 import DatePickerContainer from './components/DatePickerContainer/DatePickerContainer';
 
@@ -28,7 +31,7 @@ export default class App extends Component {
         const date = this.state.date;
 
         return (
-            <div className="App" >
+            <div className="App" style={{ background: debug && 'green'}}>
                 <div className="App-header" >
                     <ToggleDisplay show>
                         <img src={url} className="App-logo"

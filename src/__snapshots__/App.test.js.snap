@@ -3,6 +3,11 @@
 exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
 <div
   className="App"
+  style={
+    Object {
+      "background": "green",
+    }
+  }
 >
   <div
     className="App-header"
@@ -27,6 +32,11 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
   <div>
     <div
       id="DatePicker"
+      style={
+        Object {
+          "background": "#cfc",
+        }
+      }
     >
       <p>
         This is DatePicker stub with date: 
@@ -35,18 +45,33 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
       <div
         className="col"
         name="NumberChooser_year"
+        style={
+          Object {
+            "background": "#dad",
+          }
+        }
       >
         <button
           className="IncButton fa fa-arrow-up"
           onClick={undefined}
+          style={
+            Object {
+              "background": "orange",
+            }
+          }
         />
         <input
           onChange={[Function]}
-          value={undefined}
+          value={2017}
         />
         <button
           className="DecButton fa fa-arrow-down"
           onClick={undefined}
+          style={
+            Object {
+              "background": "lightgreen",
+            }
+          }
         />
       </div>
     </div>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import './DatePicker.css';
 
+import debug from '../../debug';
+
 import NumberChooser from '../NumberChooser/NumberChooser';
 
 DatePicker.propTypes = {
@@ -13,9 +15,9 @@ DatePicker.propTypes = {
 };
 function DatePicker({ year, month, day, onChange }) {
     return (
-        <div id="DatePicker">
+        <div id="DatePicker" style={{ background: debug && '#cfc'}}>
             <p>This is DatePicker stub with date: {`${day}.${month}.${year}`}</p>
-            <NumberChooser name="year" onChange={onChange} />
+            <NumberChooser name="year" value={year} onChange={onChange} />
         </div>
     );
 }
