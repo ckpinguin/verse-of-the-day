@@ -15,9 +15,11 @@ DatePicker.propTypes = {
 };
 function DatePicker({ year, month, day, onChange }) {
     return (
-        <div id="DatePicker" className="layout" style={{ background: debug && '#cfc'}}>
-            <p>This is DatePicker stub with date: {`${day}.${month}.${year}`}</p>
+        <div id="DatePicker" className="layout" style={{ background: debug && 'burlywood'}}>
+            {debug && <em>DatePicker</em>}        
             <NumberChooser name="year" value={year} onChange={onChange} />
+            <NumberChooser name="month" value={month} onChange={onChange} />
+            <NumberChooser name="day" value={day} onChange={onChange} />
         </div>
     );
 }

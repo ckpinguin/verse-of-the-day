@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import IncButton from './IncButton';
 import ReactTestUtils from 'react-dom/test-utils';
 import { shallow, mount } from 'enzyme'; 
+
+import IncButton from './IncButton';
 
 describe('<IncButton />', () => {
 

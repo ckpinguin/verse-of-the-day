@@ -16,10 +16,11 @@ NumberChooser.propTypes = {
 function NumberChooser({ name, value, onChange }) {
     return (
         <div className="col" name={`NumberChooser_${name}`} style={{ background: debug && '#dad'}} >
+            {debug && <em>NumberChooser</em>}        
             <IncButton />
             <input value={value} onChange={() => onChange({name})} />
             <DecButton />
         </div>
     );
-};
+}
 export default NumberChooser;

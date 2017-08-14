@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import debug from '../../debug';
+
 import DatePicker from '../DatePicker/DatePicker';
 import DateHelper from '../../shared/DateHelper';
 
+DatePicker.propTypes = {
+    date: PropTypes.object
+};
 class DatePickerContainer extends Component {
     constructor(props) {
         super(props);
         this.date = props.date;
     }
+
+    render() {
+        const dateObj = DateHelper.getDateObj(this.date);
+        return (
+            <div style={{ background: debug && 'darkkhaki'}}>
+                {debug && <em>DatePickerContainer</em>}
+                <DatePicker year={dateObj.year} month={dateObj.month} day={dateObj.day}/>
+            </div>
+        );
+    }
+
     onChanges(changes) {
         const formattedDate = DateHelper.formatDate(this.date, '-');
         const parts = formattedDate.split('-');
@@ -62,18 +78,5 @@ class DatePickerContainer extends Component {
         // this.emitDateChange();
     }
 
-    render() {
-        const dateObj = DateHelper.getDateObj(this.date);
-        return (
-            <div>
-                <DatePicker year={dateObj.year} month={dateObj.month} day={dateObj.day}/>
-            </div>
-        );
-    }
-
 }
 export default DatePickerContainer;
-
-DatePicker.propTypes = {
-    date: PropTypes.object
-};

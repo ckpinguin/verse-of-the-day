@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import 'font-awesome/css/font-awesome.css';
 import './index.css';
 
-import debug from './debug';
+// import debug from './debug';
 
 import App from './App';
 

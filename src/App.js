@@ -9,6 +9,7 @@ import Show from './components/Show/Show';
 import ToggleDisplay from './components/ToggleDisplay/ToggleDisplay';
 import DateHelper from './shared/DateHelper';
 import DatePickerContainer from './components/DatePickerContainer/DatePickerContainer';
+import ImageView from './components/ImageView/ImageView';
 
 export default class App extends Component {
     // API-Key for bibleserver.com API with https://our-daily-bread.herokuapp.com/
@@ -31,11 +32,12 @@ export default class App extends Component {
         const date = this.state.date;
 
         return (
-            <div className="App" style={{ background: debug && 'green'}}>
-                <div className="App-header" >
+            <div className="App" style={{ background: debug && 'darkgray'}} >
+                {debug && <em>App</em>}
+                <div className="App-header" style={{ background: debug && 'salmon'}} >
+                    {debug && <em>App-header</em>}
                     <ToggleDisplay show>
-                        <img src={url} className="App-logo"
-                            alt="Daily Bread" />
+                        <ImageView url={url} />
                     </ToggleDisplay>
                     <Show if={true} >
                         <h2>{this.title}</h2>
