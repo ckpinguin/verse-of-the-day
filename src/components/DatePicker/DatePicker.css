@@ -1,8 +1,7 @@
-.layout {
+.DatePicker {
+    grid-column: 1;
+    grid-row: 2;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    float: left;
-    width: 220px;
-    top: 27px;
 }

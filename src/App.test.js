@@ -4,6 +4,7 @@ import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 
 import App from './App';
+import Title from './components/Title/Title';
 
 describe('<App />', () => {
     it('calls componentDidMount (just for example)', () => {
@@ -14,7 +15,7 @@ describe('<App />', () => {
     });
     it('renders shallow', () => {
         const wrapper = shallow(<App />);
-        const welcome = <h2>Our daily bread</h2>;
+        const welcome = <Title value="Our daily bread"/>;
         // expect(wrapper.contains(welcome)).toEqual(true);
         // simpler version for this:
         expect(wrapper).toContainReact(welcome);

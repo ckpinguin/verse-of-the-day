@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import debug from '../../debug';
+// import { isDebug, debug } from '../../debug';
 
 import DatePicker from '../DatePicker/DatePicker';
 import DateHelper from '../../shared/DateHelper';
@@ -18,10 +18,7 @@ class DatePickerContainer extends Component {
     render() {
         const dateObj = DateHelper.getDateObj(this.date);
         return (
-            <div style={{ background: debug && 'darkkhaki'}}>
-                {debug && <em>DatePickerContainer</em>}
-                <DatePicker year={dateObj.year} month={dateObj.month} day={dateObj.day}/>
-            </div>
+            <DatePicker year={dateObj.year} month={dateObj.month} day={dateObj.day}/>
         );
     }
 

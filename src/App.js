@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import debug from './debug';
+import { isDebug, debug } from './debug';
 
 import './App.css';
 
 import Show from './components/Show/Show';
 import ToggleDisplay from './components/ToggleDisplay/ToggleDisplay';
+import Title from './components/Title/Title';
 import DateHelper from './shared/DateHelper';
 import DatePickerContainer from './components/DatePickerContainer/DatePickerContainer';
 import ImageView from './components/ImageView/ImageView';
@@ -30,19 +31,15 @@ export default class App extends Component {
         const formattedDate = DateHelper.formatDate(this.state.date, '-');
         const url = this.urlBase + formattedDate + '.png';
         const date = this.state.date;
-
-        return (
-            <div className="App" style={{ background: debug && 'darkgray'}} >
-                {debug && <em>App</em>}
-                <div className="App-header" style={{ background: debug && 'salmon'}} >
-                    {debug && <em>App-header</em>}
-                    <ToggleDisplay show>
-                        <ImageView url={url} />
-                    </ToggleDisplay>
-                    <Show if={true} >
-                        <h2>{this.title}</h2>
-                    </Show>
-                </div>
+        return (  
+            <div className="App" style={ isDebug ? debug.borderStyle : {} } >
+                {isDebug && <em>App</em>}
+                <ToggleDisplay show>
+                    <ImageView url={url} />
+                </ToggleDisplay>
+                <Show if={true} >
+                    <Title value={this.title}/>
+                </Show>
                 <DatePickerContainer date={date}/>
             </div>
         );

@@ -3,17 +3,22 @@ import PropTypes from 'prop-types';
 
 import './ImageView.css';
 
-// import debug from '../../debug';
+import { isDebug, debug } from '../../debug';
 
 ImageView.proptypes = {
     url:    PropTypes.string
 };
 function ImageView({ url }) {
+    // const borderStyle = { border: '6px solid red' };
+    
     return (
-        <img
-            src={url}
-            alt="Daily Bread"
-        />
+        <div className="ImageView" style={ isDebug ? debug.borderStyle : {} }>
+            {isDebug && <em>ImageView</em>}
+            <img
+                src={url}
+                alt="Daily Bread"
+            />
+        </div>
     );
 }
 export default ImageView;

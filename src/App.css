@@ -1,19 +1,8 @@
 .App {
-  text-align: center;
-  background: blue;
-}
-
-/* .App-logo {
-  animation: App-logo-spin infinite 40s linear;
-} */
-
-.App-header {
-  background-color: #222;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
 }
 
 @keyframes App-logo-spin {
