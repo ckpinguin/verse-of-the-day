@@ -5,33 +5,25 @@ import PropTypes from 'prop-types';
  * Toggling the display for any HTML-Tags.
  * This component was copied deliberately from https://github.com/ccnokes/react-toggle-display
  */
-
 ToggleDisplay.propTypes = {
-    tag: PropTypes.string,
     hide: PropTypes.bool,
     show: PropTypes.bool,
     if: PropTypes.bool
-};
-ToggleDisplay.defaultProps = {
-    tag: 'span'
 };
 function ToggleDisplay(props) {
     if (props.if === false) {
         return null;
     }
 
-    let style = {};
+    const style = {};
     if(shouldHide(props)) {
         style.display = 'none';
     }
 
-    const Tag = props.tag;
     // prevent our props from being leaked down onto the children
     const newProps = pickProps(props);
-
-    return (
-        <Tag style={style} {...newProps} />
-    );
+    return React.cloneElement(props.children, { newProps, style: style });
+    
 }
 export default ToggleDisplay;
 

@@ -14,48 +14,22 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
   <em>
     App
   </em>
-  <span
-    style={Object {}}
-  >
-    <div
-      className="ImageView"
-      style={
-        Object {
-          "border": "6px solid lightgreen",
-          "margin": "5px",
-          "padding": "5px",
-        }
-      }
-    >
-      <em>
-        ImageView
-      </em>
-      <img
-        alt="Daily Bread"
-        src="https://logos.com/media/VerseOfTheDay/768x432/2017-08-01.png"
-      />
-    </div>
-  </span>
   <div
-    style={Object {}}
-  >
-    <div
-      className="Title"
-      style={
-        Object {
-          "border": "6px solid lightgreen",
-          "margin": "5px",
-          "padding": "5px",
-        }
+    className="Title"
+    style={
+      Object {
+        "border": "6px solid lightgreen",
+        "margin": "5px",
+        "padding": "5px",
       }
-    >
-      <em>
-        Title
-      </em>
-      <h2>
-        Our daily bread
-      </h2>
-    </div>
+    }
+  >
+    <em>
+      Title
+    </em>
+    <h2>
+      Our daily bread
+    </h2>
   </div>
   <div
     className="DatePicker"

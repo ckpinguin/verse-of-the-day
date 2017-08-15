@@ -34,10 +34,10 @@ export default class App extends Component {
         return (  
             <div className="App" style={ isDebug ? debug.borderStyle : {} } >
                 {isDebug && <em>App</em>}
-                <ToggleDisplay show>
+                <Show if={true}>
                     <ImageView url={url} />
-                </ToggleDisplay>
-                <Show if={true} >
+                </Show>
+                <Show if={true}>
                     <Title value={this.title}/>
                 </Show>
                 <DatePickerContainer date={date}/>

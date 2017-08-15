@@ -21,9 +21,7 @@ function Show(props) {
     // style.display = 'none';
     
     return (
-        <div style={style} >
-            {props.children}
-        </div>
+        React.cloneElement(props.children, {  style: {style} })
     );
 }
 export default Show;
