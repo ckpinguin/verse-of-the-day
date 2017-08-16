@@ -2,11 +2,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
+  /* justify-content: center; */
   /* grid-template-rows: 100px 200px 100px;   */
   grid-template-rows: minmax(min-content, auto);
   /* used to define rows or columns the implicit grid (if needed) */
   /* grid-auto-rows: minmax(min-content, auto); */
   /* grid-auto-rows: 0.5fr 1fr 0.5fr; */
+  
   grid-template-areas:
   ".....      title      .....    "
   "content    content    content  "
