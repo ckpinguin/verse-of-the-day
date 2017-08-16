@@ -2,29 +2,47 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
+  /* grid-template-rows: 100px 200px 100px;   */
   grid-template-rows: minmax(min-content, auto);
   /* grid-auto-rows: minmax(min-content, auto); */
   /* grid-auto-rows: 0.5fr 1fr 0.5fr; */
   grid-template-areas:
-  ".          App-Title        .        "
-  "App-Main   App-Main         App-Main "
-  ".          App-DatePicker   .        "
-  "footer     footer           footer   ";
+  ".....      title      .....    "
+  "content    content    content  "
+  ".....      handle     .....    "
+  "footer     footer     footer   ";
+}
+
+@media screen and (max-width: 40em) {
+    .App {
+        grid-template-areas:
+        "title      title      .....    "
+        "content    content    content  "
+        "handle     handle     handle   "
+        "footer     footer     footer   ";
+    }
 }
 
 .App-Title {
-  grid-column: 1 / 4;
-  grid-row: 1;
+    grid-area: title;
+/*   grid-column: 1 / 4;
+  grid-row: 1; */
 }
 
 .App-Main {
-  grid-column: 1 / 4;
-  grid-row: 2;
+    grid-area: content;
+/*   grid-column: 1 / 4;
+  grid-row: 2; */
 }
 
 .App-DatePicker {
-  grid-column: 2;
-  grid-row: 3;
+    grid-area: handle;
+/*   grid-column: 2;
+  grid-row: 3; */
+}
+
+.App-Footer {
+  grid-area: footer;
 }
 
 @keyframes App-logo-spin {
