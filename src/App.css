@@ -1,8 +1,30 @@
 .App {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-rows: minmax(min-content, auto);
+  /* grid-auto-rows: minmax(min-content, auto); */
+  /* grid-auto-rows: 0.5fr 1fr 0.5fr; */
+  grid-template-areas:
+  ".          App-Title        .        "
+  "App-Main   App-Main         App-Main "
+  ".          App-DatePicker   .        "
+  "footer     footer           footer   ";
+}
+
+.App-Title {
+  grid-column: 1 / 4;
+  grid-row: 1;
+}
+
+.App-Main {
+  grid-column: 1 / 4;
+  grid-row: 2;
+}
+
+.App-DatePicker {
+  grid-column: 2;
+  grid-row: 3;
 }
 
 @keyframes App-logo-spin {

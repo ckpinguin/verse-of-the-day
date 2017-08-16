@@ -6,7 +6,7 @@ import { isDebug, debug } from './debug';
 import './App.css';
 
 import Show from './components/Show/Show';
-import ToggleDisplay from './components/ToggleDisplay/ToggleDisplay';
+// import ToggleDisplay from './components/ToggleDisplay/ToggleDisplay';
 import Title from './components/Title/Title';
 import DateHelper from './shared/DateHelper';
 import DatePickerContainer from './components/DatePickerContainer/DatePickerContainer';
@@ -33,14 +33,19 @@ export default class App extends Component {
         const date = this.state.date;
         return (  
             <div className="App" style={ isDebug ? debug.borderStyle : {} } >
-                {isDebug && <em>App</em>}
-                <Show if={true}>
-                    <ImageView url={url} />
-                </Show>
-                <Show if={true}>
-                    <Title value={this.title}/>
-                </Show>
-                <DatePickerContainer date={date}/>
+                <div className="App-Title">
+                    <Show if={true}>
+                        <Title value={this.title}/>
+                    </Show>
+                </div>
+                <div className="App-Main">
+                    <Show if={true}>
+                        <ImageView url={url} />
+                    </Show>
+                </div>
+                <div className="App-DatePicker">
+                    <DatePickerContainer date={date}/>
+                </div>
             </div>
         );
     }
