@@ -1,4 +1,4 @@
-const isDebug = true;
+const isDebug = false;
 const debug = {
     borderStyle: {
         border: '6px solid lightgreen',
