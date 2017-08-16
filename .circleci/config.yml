@@ -108,7 +108,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               # npm run build # done in build job
               mkdir to_push
-              cp package.json server.js to_push
+              cp Procfile package.json server.js to_push
               cp -R build to_push
               git config --global user.email "ckpinguin@circleci.com"
               git config --global user.name "Chrigi"
