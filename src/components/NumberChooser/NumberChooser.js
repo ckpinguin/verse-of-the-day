@@ -9,16 +9,25 @@ import IncButton from '../IncButton/IncButton';
 import DecButton from '../DecButton/DecButton';
 
 NumberChooser.propTypes = {
-    name:       PropTypes.string,
-    value:      PropTypes.number,
-    onChange:   PropTypes.func
+    name:       PropTypes.string.isRequired,
+    value:      PropTypes.number.isRequired,
+    onChange:   PropTypes.func.isRequired,
 };
 function NumberChooser({ name, value, onChange }) {
     return (
         <div className="col" name={`NumberChooser_${name}`} style={ isDebug ? debug.borderStyle : {} } >       
-            <IncButton />
-            <input value={value} onChange={() => onChange({name})} />
-            <DecButton />
+            <IncButton
+                onButtonClicked={() => onChange(value+1)}
+            />
+            <input
+                name={name}
+                type="number"
+                value={value}
+                onChange={(e) => onChange(e)}
+            />
+            <DecButton
+                onButtonClicked={() => onChange(value-1)}
+            />
         </div>
     );
 }

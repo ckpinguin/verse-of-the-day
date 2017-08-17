@@ -23,7 +23,7 @@ module.exports = {
     },
     "plugins": ["react"],
     "rules": {
-        "complexity": ["warn", 3],
+        "complexity": ["warn", 5],
         "no-multi-spaces": 1,
         "array-bracket-spacing": 1,
         "block-spacing": 1,

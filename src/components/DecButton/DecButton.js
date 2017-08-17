@@ -6,11 +6,15 @@ import './DecButton.css';
 import { isDebug, debug } from '../../debug';
 
 DecButton.propTypes = {
-    onClick: PropTypes.func
+    onButtonClicked: PropTypes.func
 };
-function DecButton({ onClick }) {
+function DecButton({ onButtonClicked }) {
     return (
-        <button className="DecButton fa fa-arrow-down" style={ isDebug ? debug.borderStyle : {} } onClick={onClick} />
+        <button
+            className="DecButton fa fa-arrow-down"
+            style={ isDebug ? debug.borderStyle : {} }
+            onClick={onButtonClicked}
+        />
     );
 }
 export default DecButton;

@@ -44,16 +44,18 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
       >
         <button
           className="fa fa-arrow-up"
-          onClick={undefined}
+          onClick={[Function]}
           style={Object {}}
         />
         <input
+          name="year"
           onChange={[Function]}
+          type="number"
           value={2017}
         />
         <button
           className="DecButton fa fa-arrow-down"
-          onClick={undefined}
+          onClick={[Function]}
           style={Object {}}
         />
       </div>
@@ -64,16 +66,18 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
       >
         <button
           className="fa fa-arrow-up"
-          onClick={undefined}
+          onClick={[Function]}
           style={Object {}}
         />
         <input
+          name="month"
           onChange={[Function]}
-          value={8}
+          type="number"
+          value={7}
         />
         <button
           className="DecButton fa fa-arrow-down"
-          onClick={undefined}
+          onClick={[Function]}
           style={Object {}}
         />
       </div>
@@ -84,16 +88,18 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
       >
         <button
           className="fa fa-arrow-up"
-          onClick={undefined}
+          onClick={[Function]}
           style={Object {}}
         />
         <input
+          name="day"
           onChange={[Function]}
+          type="number"
           value={1}
         />
         <button
           className="DecButton fa fa-arrow-down"
-          onClick={undefined}
+          onClick={[Function]}
           style={Object {}}
         />
       </div>

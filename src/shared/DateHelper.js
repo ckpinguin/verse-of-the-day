@@ -7,7 +7,7 @@ const DateHelper = {
     },
     minValues: {
         day: 1,
-        month: 1,
+        month: 0,
         year: 2014
     },
 
@@ -28,7 +28,7 @@ const DateHelper = {
     getDateObj: (date) => {
         return {
             year: date.getFullYear(),
-            month: date.getMonth() +1, // month is 0-based!
+            month: date.getMonth()+1,
             day: date.getDate()
         };
     },

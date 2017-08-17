@@ -23,30 +23,45 @@ export default class App extends Component {
             date: props.date ? props.date : DateHelper.randomDate()
         };
     }
-    
-    componentDidMount() {
-    }
 
     render() {
         const formattedDate = DateHelper.formatDate(this.state.date, '-');
         const url = this.urlBase + formattedDate + '.png';
-        const date = this.state.date;
         return (  
             <div className="App" style={ isDebug ? debug.borderStyle : {} } >
                 <div className="App-Title">
                     <Show if={true}>
-                        <Title value={this.title}/>
+                        <Title
+                            value={this.title}
+                        />
                     </Show>
                 </div>
                 <div className="App-Main">
                     <Show if={true}>
-                        <ImageView url={url} />
+                        <ImageView
+                            url={url}
+                        />
                     </Show>
                 </div>
                 <div className="App-DatePicker">
-                    <DatePickerContainer date={date}/>
+                    <DatePickerContainer
+                        date={this.state.date}
+                        onChange={(newDate) => this.updateDate(newDate)}
+                    />
                 </div>
             </div>
         );
     }
+
+    updateDate(newDate) {
+        console.log('Updating state with: ', newDate);
+        this.setState ({
+            date: newDate
+        });
+        console.log('state is now: ', this.state);
+    }
+
+    componentDidMount() {
+    }
+    
 }

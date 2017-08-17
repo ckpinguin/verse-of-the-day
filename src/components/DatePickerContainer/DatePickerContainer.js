@@ -6,73 +6,45 @@ import PropTypes from 'prop-types';
 import DatePicker from '../DatePicker/DatePicker';
 import DateHelper from '../../shared/DateHelper';
 
-DatePicker.propTypes = {
-    date: PropTypes.object
-};
 class DatePickerContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.date = props.date;
-    }
+    static propTypes = {
+        date: PropTypes.object,
+        onChange: PropTypes.func.isRequired
+    };
 
     render() {
-        const dateObj = DateHelper.getDateObj(this.date);
+        const dateObj = DateHelper.getDateObj(this.props.date);
         return (
-            <DatePicker year={dateObj.year} month={dateObj.month} day={dateObj.day}/>
+            <DatePicker
+                year={dateObj.year}
+                month={dateObj.month}
+                day={dateObj.day}
+                onFieldChange={(field, newValue) => this.handleChangeForField(field, newValue)}
+            />
         );
     }
 
-    onChanges(changes) {
-        const formattedDate = DateHelper.formatDate(this.date, '-');
-        const parts = formattedDate.split('-');
-        if (parts.length === 3) {
-            this.formDate = {
-                year: Math.min(parseInt(parts[0], 10), DateHelper.maxValues.year),
-                month: Math.min(parseInt(parts[1], 10), DateHelper.maxValues.month),
-                day: Math.min(parseInt(parts[2], 10), DateHelper.maxValues.day)
-            };
+    handleChangeForField(field, newValue) {
+        const dateObj = DateHelper.getDateObj(this.props.date);
+        let value = newValue;
+        // let value = Math.max(newValue, 0) % DateHelper.maxValues[field];
+        // value = Math.min(value, DateHelper.maxValues[field]);
+        let newDate = null;
+        switch ( field ) {
+        // In any case, correct month -1 (month in Date is 0 based!)
+        case 'year':
+            newDate = new Date(value, dateObj.month-1, dateObj.day);
+            break;
+        case 'month':
+            newDate = new Date(dateObj.year, value-1, dateObj.day);
+            break;
+        case 'day':
+            newDate = new Date(dateObj.year, dateObj.month-1, value);
+            break;
+        default:
+            break;
         }
-    }
-
-    incrementField(field) {
-        const maxValue = DateHelper.maxValues[field];
-        const minValue = DateHelper.minValues[field];
-        this.formDate[field] = (this.formDate[field] + 1 > maxValue)
-            ? minValue
-            : this.formDate[field] + 1;
-        this.emitDateChange();
-    }
-
-    decrementField(field) {
-        const maxValue = DateHelper.maxValues[field];
-        const minValue = DateHelper.minValues[field];
-        this.formDate[field] = (this.formDate[field] - 1 < minValue)
-            ? maxValue
-            : this.formDate[field] - 1;
-        this.emitDateChange();
-    }
-
-    reset() {
-        this.formDate = {
-            year: DateHelper.minValues['year'],
-            month: DateHelper.minValues['month'],
-            day: DateHelper.minValues['day']
-        };
-        this.emitDateChange();
-    }
-
-    emitDateChange() {
-        // const date = new Date(this.formDate.year, this.formDate.month - 1, this.formDate.day);
-        // console.log('emitting dateChange with: ', date);
-        // this.dateChange.emit(date);
-    }
-
-    changeDate(field, inputValue) {
-        let value = Math.max(inputValue, 0);
-        value = Math.min(value, DateHelper.maxValues[field]);
-        // console.log('changing ', field, ' to: ', value);
-        this.formDate[field] = value;
-        // this.emitDateChange();
+        this.props.onChange(newDate);
     }
 
 }
