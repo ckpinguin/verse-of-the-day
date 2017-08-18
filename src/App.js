@@ -54,11 +54,10 @@ export default class App extends Component {
     }
 
     updateDate(newDate) {
-        console.log('Updating state with: ', newDate);
+        // Don't forget, this is async!
         this.setState ({
             date: newDate
         });
-        console.log('state is now: ', this.state);
     }
 
     componentDidMount() {
