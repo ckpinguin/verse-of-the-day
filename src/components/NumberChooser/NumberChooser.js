@@ -22,9 +22,9 @@ function NumberChooser({ name, value, onChange }) {
             <input
                 name={name}
                 type="number"
-                // defaultValue={value} // uncontrolled component
-                // key={value} // key is used to force re-rendering on uncontrolled comp.
-                value={value} // controlled component
+                defaultValue={value} // uncontrolled component
+                key={value} // key is used to force re-rendering on uncontrolled comp.
+                // value={value} // controlled component
                 // onChange={(e) => { onChange(e.target.value) } }
                 onBlur={(e) => { onChange(e.target.value); }}
             />
