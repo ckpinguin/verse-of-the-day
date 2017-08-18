@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 
 import { isDebug, debug } from './debug';
 
@@ -22,9 +21,11 @@ export default class App extends Component {
         this.state = {
             date: props.date ? props.date : DateHelper.randomDate()
         };
+        // this.updateDate = _.debounce(this.updateDate,1000);
+        
     }
 
-    render() {
+    render = () => {
         const formattedDate = DateHelper.formatDate(this.state.date, '-');
         const url = this.urlBase + formattedDate + '.png';
         return (  
@@ -53,14 +54,14 @@ export default class App extends Component {
         );
     }
 
-    updateDate(newDate) {
+    updateDate = (newDate) => {
         // Don't forget, this is async!
         this.setState ({
             date: newDate
         });
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
     }
     
 }

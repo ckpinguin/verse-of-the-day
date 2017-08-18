@@ -11,20 +11,32 @@ class DatePickerContainer extends Component {
         date: PropTypes.object,
         onChange: PropTypes.func.isRequired
     };
+    constructor(props) {
+        super(props);
+        this.dateObj = DateHelper.getDateObj(this.props.date);
+    }
 
-    render() {
-        const dateObj = DateHelper.getDateObj(this.props.date);
+    componentWillReceiveProps(nextProps) {
+        console.log('receiving props: ', nextProps);
+        this.dateObj = DateHelper.getDateObj(nextProps.date);
+    }
+    shouldComponentUpdate(nextProps) {
+        console.log('shouldComponentUpdate? ', nextProps);
+        return true;
+    }
+
+    render = () => {
         return (
             <DatePicker
-                year={dateObj.year}
-                month={dateObj.month}
-                day={dateObj.day}
+                year={this.dateObj.year}
+                month={this.dateObj.month}
+                day={this.dateObj.day}
                 onFieldChange={(field, newValue) => this.handleChangeForField(field, newValue)}
             />
         );
     }
 
-    handleChangeForField(field, newValue) {
+    handleChangeForField = (field, newValue) => {
         const dateObj = DateHelper.getDateObj(this.props.date);
         let value = newValue;
         // let value = Math.max(newValue, 0) % DateHelper.maxValues[field];

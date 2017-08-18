@@ -50,6 +50,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         <input
           name="year"
           onBlur={[Function]}
+          onChange={[Function]}
           type="number"
           value={2017}
         />
@@ -72,6 +73,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         <input
           name="month"
           onBlur={[Function]}
+          onChange={[Function]}
           type="number"
           value={8}
         />
@@ -94,6 +96,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         <input
           name="day"
           onBlur={[Function]}
+          onChange={[Function]}
           type="number"
           value={1}
         />
