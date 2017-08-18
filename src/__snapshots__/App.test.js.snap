@@ -48,10 +48,10 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
           style={Object {}}
         />
         <input
-          defaultValue={2017}
           name="year"
           onBlur={[Function]}
           type="number"
+          value={2017}
         />
         <button
           className="DecButton fa fa-arrow-down"
@@ -70,10 +70,10 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
           style={Object {}}
         />
         <input
-          defaultValue={8}
           name="month"
           onBlur={[Function]}
           type="number"
+          value={8}
         />
         <button
           className="DecButton fa fa-arrow-down"
@@ -92,10 +92,10 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
           style={Object {}}
         />
         <input
-          defaultValue={1}
           name="day"
           onBlur={[Function]}
           type="number"
+          value={1}
         />
         <button
           className="DecButton fa fa-arrow-down"
