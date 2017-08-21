@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// import { isDebug, debug } from '../../debug';
+import { isDebug, debug } from '../../debug';
 
-import DatePicker from '../DatePicker/DatePicker';
+import NumberChooser from '../NumberChooser/NumberChooser';
 import DateHelper from '../../shared/DateHelper';
 
 class DatePickerContainer extends Component {
@@ -20,30 +20,45 @@ class DatePickerContainer extends Component {
         console.log('receiving props: ', nextProps);
         this.dateObj = DateHelper.getDateObj(nextProps.date);
     }
-    shouldComponentUpdate(nextProps) {
-        console.log('shouldComponentUpdate? ', nextProps);
-        return true;
-    }
 
     render = () => {
+        const { year, month, day } = this.dateObj;
         return (
-            <DatePicker
-                year={this.dateObj.year}
-                month={this.dateObj.month}
-                day={this.dateObj.day}
-                onFieldChange={(field, newValue) => this.handleChangeForField(field, newValue)}
-            />
+            <div className="DatePicker" style={ isDebug ? debug.borderStyle : {} }>
+                {isDebug && <em>DatePicker</em>}        
+                <NumberChooser
+                    id="year"
+                    name="year"
+                    value={year}
+                    onChange={(val) => this.handleChangeForField('year', val)}
+                />
+                <NumberChooser
+                    id="month"
+                    name="month"
+                    value={month}
+                    onChange={(val) => this.handleChangeForField('month', val)}
+                />
+                <NumberChooser
+                    id="day"
+                    name="day"
+                    value={day}
+                    onChange={(val) => this.handleChangeForField('day', val)}
+                />
+            </div>
         );
     }
 
-    handleChangeForField = (field, newValue) => {
+    handleChangeForField = (field, value) => {
         const dateObj = DateHelper.getDateObj(this.props.date);
-        let value = newValue;
         // let value = Math.max(newValue, 0) % DateHelper.maxValues[field];
         // value = Math.min(value, DateHelper.maxValues[field]);
         let newDate = null;
         switch ( field ) {
         // In any case, correct month -1 (month in Date is 0 based!)
+        /** new Date() is automatically converting dates with "overflow"
+         * values into valid dates (e.g. day=35 becomes day=4 of the next
+         * month)
+        */
         case 'year':
             newDate = new Date(value, dateObj.month-1, dateObj.day);
             break;

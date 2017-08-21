@@ -1,9 +1,0 @@
-.DatePicker {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}

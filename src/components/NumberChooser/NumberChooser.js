@@ -16,6 +16,10 @@ export default class NumberChooser extends React.Component {
     };
     constructor(props) {
         super(props);
+        /** This state is only needed to hold value in the field 
+        *   of this controlled component instead of directly updating
+        *   the main state, that would update it immediately after 
+        *   pressing a button  */
         this.state = { value: this.props.value };
     }
     componentWillReceiveProps(nextProps) {
