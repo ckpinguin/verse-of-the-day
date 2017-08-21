@@ -11,7 +11,7 @@ IncButton.propTypes = {
 function IncButton({ onButtonClicked }) {
     return (
         <button
-            className="fa fa-arrow-up"
+            className="IncButton fa fa-arrow-up"
             style={ isDebug ? debug.borderStyle : {} }
             onClick={onButtonClicked}
         />

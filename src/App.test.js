@@ -4,9 +4,17 @@ import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 
 import App from './App';
+
 import Title from './components/Title/Title';
+// Mock 3rd-party-library (used as HOC)
+jest.mock('react-hotkeys', () => {
+    return {
+        HotKeys: 'HotKeys',
+    };
+});
 
 describe('<App />', () => {
+    
     it('calls componentDidMount (just for example)', () => {
         App.prototype.componentDidMount = jest.fn();
         const wrapper = mount(<App />);
@@ -21,7 +29,7 @@ describe('<App />', () => {
         expect(wrapper).toContainReact(welcome);
     });
     it('renders without crashing', () => {
-        const div = document.createElement('div');
+        // const div = document.createElement('div');
         //ReactDOM.render(<App />, div);
         ReactTestUtils.renderIntoDocument(<App/>);
     });    
@@ -30,7 +38,7 @@ describe('<App />', () => {
         const welcome = <h2>Our daily bread</h2>;        
         expect(wrapper).toContainReact(welcome);
     });
-    it('did not change UI compared to recorded snapshot', () => {
+    it('did not change UI compared to recorded snapshot', () => {        
         const date = new Date(2017, 7, 1);
         const component = renderer.create(<App date={date}/>);
         // component.state = { date: new Date(2017, 7, 1) };

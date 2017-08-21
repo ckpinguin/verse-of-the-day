@@ -21,12 +21,12 @@ describe('<DecButton />', () => {
     });
 
     it('simulates click events', () => {
-        DecButton.prototype.onClick = jest.fn();    
-        const onClick = DecButton.prototype.onClick;
+        DecButton.prototype.onButtonClicked = jest.fn();    
+        const mockClick = DecButton.prototype.onButtonClicked;
         const wrapper = mount((
-            <DecButton onClick={onClick} />
+            <DecButton onButtonClicked={mockClick} />
         ));
         wrapper.find('button').simulate('click');
-        expect(onClick).toHaveBeenCalled();
+        expect(mockClick).toHaveBeenCalled();
     });
 });

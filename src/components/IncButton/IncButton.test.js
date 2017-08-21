@@ -20,12 +20,12 @@ describe('<IncButton />', () => {
     });
 
     it('simulates click events', () => {
-        IncButton.prototype.onClick = jest.fn();    
-        const onClick = IncButton.prototype.onClick;
+        IncButton.prototype.onButtonClicked = jest.fn();    
+        const mockClick = IncButton.prototype.onButtonClicked;
         const wrapper = mount((
-            <IncButton onClick={onClick} />
+            <IncButton onButtonClicked={mockClick} />
         ));
         wrapper.find('button').simulate('click');
-        expect(onClick).toHaveBeenCalled();
+        expect(mockClick).toHaveBeenCalled();
     });
 });

@@ -1,8 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
-<div
+<HotKeys
   className="App"
+  handlers={
+    Object {
+      "dayMinus": [Function],
+      "dayPlus": [Function],
+    }
+  }
+  keyMap={
+    Object {
+      "dayMinus": Array [
+        "down",
+        "left",
+      ],
+      "dayPlus": Array [
+        "up",
+        "right",
+      ],
+    }
+  }
   style={Object {}}
 >
   <div
@@ -43,7 +61,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         style={Object {}}
       >
         <button
-          className="fa fa-arrow-up"
+          className="IncButton fa fa-arrow-up"
           onClick={[Function]}
           style={Object {}}
         />
@@ -66,7 +84,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         style={Object {}}
       >
         <button
-          className="fa fa-arrow-up"
+          className="IncButton fa fa-arrow-up"
           onClick={[Function]}
           style={Object {}}
         />
@@ -89,7 +107,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         style={Object {}}
       >
         <button
-          className="fa fa-arrow-up"
+          className="IncButton fa fa-arrow-up"
           onClick={[Function]}
           style={Object {}}
         />
@@ -108,5 +126,5 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
       </div>
     </div>
   </div>
-</div>
+</HotKeys>
 `;
