@@ -22,34 +22,7 @@ class DatePickerContainer extends Component {
         this.dateObj = DateHelper.getDateObj(nextProps.date);
     }
 
-    render = () => {
-        const { year, month, day } = this.dateObj;
-        return (
-            <div className="DatePicker" style={ isDebug ? debug.borderStyle : {} }>
-                {isDebug && <em>DatePicker</em>}        
-                <NumberChooser
-                    id="year"
-                    name="year"
-                    value={year}
-                    onChange={(val) => this._handleChangeForField('year', val)}
-                />
-                <NumberChooser
-                    id="month"
-                    name="month"
-                    value={month}
-                    onChange={(val) => this._handleChangeForField('month', val)}
-                />
-                <NumberChooser
-                    id="day"
-                    name="day"
-                    value={day}
-                    onChange={(val) => this._handleChangeForField('day', val)}
-                />
-            </div>
-        );
-    }
-
-    _handleChangeForField = (field, value) => {
+    handleChangeForField = (field) => (value) => {
         const dateObj = DateHelper.getDateObj(this.props.date);
         // let value = Math.max(newValue, 0) % DateHelper.maxValues[field];
         // value = Math.min(value, DateHelper.maxValues[field]);
@@ -75,5 +48,31 @@ class DatePickerContainer extends Component {
         this.props.onChange(newDate);
     }
 
+    render() {
+        const { year, month, day } = this.dateObj;
+        return (
+            <div className="DatePicker" style={ isDebug ? debug.borderStyle : {} }>
+                {isDebug && <em>DatePicker</em>}        
+                <NumberChooser
+                    id="year"
+                    name="year"
+                    value={year}
+                    onChange={this.handleChangeForField('year')}
+                />
+                <NumberChooser
+                    id="month"
+                    name="month"
+                    value={month}
+                    onChange={this.handleChangeForField('month')}
+                />
+                <NumberChooser
+                    id="day"
+                    name="day"
+                    value={day}
+                    onChange={this.handleChangeForField('day')}
+                />
+            </div>
+        );
+    }
 }
 export default DatePickerContainer;
