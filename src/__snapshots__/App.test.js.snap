@@ -51,8 +51,14 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
   <div
     className="App-DatePicker"
   >
-    <div
+    <HotKeys
       className="DatePicker"
+      handlers={
+        Object {
+          "dayMinus": [Function],
+          "dayPlus": [Function],
+        }
+      }
       style={Object {}}
     >
       <div
@@ -124,7 +130,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
           style={Object {}}
         />
       </div>
-    </div>
+    </HotKeys>
   </div>
 </HotKeys>
 `;

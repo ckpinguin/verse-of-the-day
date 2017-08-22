@@ -41,7 +41,7 @@ export default class App extends Component {
 
     // Extra currying because a function object is needed as handler
     changeDay = (days, e) => (e) => {
-        e.preventDefault(); // prevent default for subcomp. NumberChooser (just a hack for now)
+        // e.preventDefault(); // prevent default for subcomp. NumberChooser (just a hack for now)
         const dateObj = DateHelper.getDateObj(this.state.date);
         this.updateDate(new Date(dateObj.year, dateObj.month-1, dateObj.day+days));
     }
@@ -71,7 +71,11 @@ export default class App extends Component {
         const formattedDate = DateHelper.formatDate(this.state.date, '-');
         const url = this.urlBase + formattedDate + '.png';
         return (  
-            <HotKeys keyMap={keyMap} handlers={handlers} className="App" style={ isDebug ? debug.borderStyle : {} } >            
+            <HotKeys
+                keyMap={keyMap}
+                handlers={handlers}
+                className="App"
+                style={ isDebug ? debug.borderStyle : {} }>
                 <div className="App-Title">
                     <Show if={true}>
                         <Title

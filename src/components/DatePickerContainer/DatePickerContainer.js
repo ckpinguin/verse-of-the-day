@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { HotKeys } from 'react-hotkeys';
 
 import { isDebug, debug } from '../../debug';
 
@@ -50,8 +51,14 @@ class DatePickerContainer extends Component {
 
     render() {
         const { year, month, day } = this.dateObj;
+        const handlers = {
+            // Currying (partial function argument application returning a function)
+            // This could be done with `bind` also
+            'dayPlus':    (e) => {  },
+            'dayMinus':   (e) => {  }
+        };
         return (
-            <div className="DatePicker" style={ isDebug ? debug.borderStyle : {} }>
+            <HotKeys handlers={handlers} className="DatePicker" style={ isDebug ? debug.borderStyle : {} }>
                 {isDebug && <em>DatePicker</em>}        
                 <NumberChooser
                     id="year"
@@ -71,7 +78,7 @@ class DatePickerContainer extends Component {
                     value={day}
                     onChange={this.handleChangeForField('day')}
                 />
-            </div>
+            </HotKeys>
         );
     }
 }
