@@ -57,7 +57,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
     >
       <button
         className="NavButton fa fa-chevron-left"
-        onClick={undefined}
+        onClick={[Function]}
         style={Object {}}
       />
       <HotKeys
@@ -160,7 +160,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
       </HotKeys>
       <button
         className="NavButton fa fa-chevron-right"
-        onClick={undefined}
+        onClick={[Function]}
         style={Object {}}
       />
     </div>
