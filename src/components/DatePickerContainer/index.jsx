@@ -18,7 +18,7 @@ class DatePickerContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('receiving props: ', nextProps);
+        // console.log('receiving props: ', nextProps);
         this.dateObj = DateHelper.getDateObj(nextProps.date);
     }
 
