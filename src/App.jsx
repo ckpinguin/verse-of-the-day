@@ -6,12 +6,12 @@ import { isDebug, debug } from './debug';
 
 import './App.css';
 
-import Show from './components/Show/Show';
+import Show from './components/Show';
 // import ToggleDisplay from './components/ToggleDisplay/ToggleDisplay';
-import Title from './components/Title/Title';
+import Title from './components/Title';
 import DateHelper from './shared/DateHelper';
-import DatePickerContainer from './components/DatePickerContainer/DatePickerContainer';
-import ImageView from './components/ImageView/ImageView';
+import Navigator from './components/Navigator';
+import ImageView from './components/ImageView';
 
 export default class App extends Component {
     // API-Key for bibleserver.com API with https://our-daily-bread.herokuapp.com/
@@ -20,16 +20,19 @@ export default class App extends Component {
     static propTypes = {
         date:   PropTypes.object
     }
+    static defaultProps = {
+        date:   DateHelper.randomDate()
+    }
     
     constructor(props) {
         super(props);
         this.title = 'Our daily bread';
         this.urlBase = 'https://logos.com/media/VerseOfTheDay/768x432/';
         this.state = {
-            date: props.date ? props.date : DateHelper.randomDate()
+            date: props.date 
         };
-        // this.updateDate = _.debounce(this.updateDate,1000)
-        
+        this.changeDay = this.changeDay.bind(this);
+        this.updateDate = this.updateDate.bind(this);
     }
 
     updateDate = (newDate) => {
@@ -50,11 +53,11 @@ export default class App extends Component {
     //     const dateObj = DateHelper.getDateObj(this.state.date);
     //     this.updateDate(new Date(dateObj.year, dateObj.month-1, dateObj.day+days));
     // }
-    handleUpPressed = (days, e) => (e) => {
-        e.preventDefault();
-        const dateObj = DateHelper.getDateObj(this.state.date);
-        this.updateDate(new Date(dateObj.year, dateObj.month-1, dateObj.day+days));
-    }
+    // handleUpPressed = (days, e) => (e) => {
+    //     e.preventDefault();
+    //     const dateObj = DateHelper.getDateObj(this.state.date);
+    //     this.updateDate(new Date(dateObj.year, dateObj.month-1, dateObj.day+days));
+    // }
 
     render() {
         // TODO: Make the standard up/down key binding work again in subcomponent NumberChooser
@@ -75,25 +78,28 @@ export default class App extends Component {
                 keyMap={keyMap}
                 handlers={handlers}
                 className="App"
-                style={ isDebug ? debug.borderStyle : {} }>
+                style={ isDebug ? debug.borderStyle : {} }
+            >
                 <div className="App-Title">
-                    <Show if={true}>
+                    <Show if>
                         <Title
                             value={this.title}
                         />
                     </Show>
                 </div>
                 <div className="App-Main">
-                    <Show if={true}>
+                    <Show if>
                         <ImageView
                             url={url}
                         />
                     </Show>
                 </div>
                 <div className="App-DatePicker">
-                    <DatePickerContainer
+                    <Navigator 
                         date={this.state.date}
-                        onChange={(newDate) => this.updateDate(newDate)}
+                        onChange={this.updateDate}
+                        onNext={this.changeDay(+1)}
+                        onPrev={this.changeDay(-1)}
                     />
                 </div>
             </HotKeys>

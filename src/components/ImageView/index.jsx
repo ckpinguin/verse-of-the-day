@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './ImageView.css';
+import './index.css';
 
 import { isDebug, debug } from '../../debug';
 
 ImageView.proptypes = {
-    url:    PropTypes.string
+    url:    PropTypes.string.isRequired
 };
 function ImageView({ url }) {
     // const borderStyle = { border: '6px solid red' };

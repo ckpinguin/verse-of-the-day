@@ -1,0 +1,19 @@
+.NumberChooser-col {
+    width: 60px;
+    float: left;
+    /* margin: 0 10; */
+}
+
+.NumberChooser-caption {
+    margin: 0;
+    opacity: 0.3;
+    /* padding: 5; */
+}
+
+.NumberChooser-input {
+    font-size: 1.1em;
+    border-width: 0;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}

@@ -12,6 +12,9 @@ Usage example:
 Show.propTypes = {
     if: PropTypes.bool
 };
+Show.defaultProps = {
+    if: true
+};
 function Show(props) {
     if (props.if === false) {
         return null;

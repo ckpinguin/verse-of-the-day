@@ -10,6 +10,11 @@ ToggleDisplay.propTypes = {
     show: PropTypes.bool,
     if: PropTypes.bool
 };
+ToggleDisplay.defaultProps = {
+    hide: false,
+    show: true,
+    if: true
+};
 function ToggleDisplay(props) {
     if (props.if === false) {
         return null;

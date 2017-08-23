@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Title.css';
+import './index.css';
 
 import { isDebug, debug } from '../../debug';
 
 Title.propTypes = {
-    value: PropTypes.string
+    value: PropTypes.string.isRequired
 };
 function Title({ value }) {
     return (

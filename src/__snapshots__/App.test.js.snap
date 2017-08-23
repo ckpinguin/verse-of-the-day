@@ -51,86 +51,119 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
   <div
     className="App-DatePicker"
   >
-    <HotKeys
-      className="DatePicker"
-      handlers={
-        Object {
-          "dayMinus": [Function],
-          "dayPlus": [Function],
-        }
-      }
+    <div
+      className="Navigator"
       style={Object {}}
     >
-      <div
-        className="col"
-        name="NumberChooser_year"
+      <button
+        className="NavButton fa fa-chevron-left"
+        onClick={undefined}
+        style={Object {}}
+      />
+      <HotKeys
+        className="DatePicker"
+        handlers={
+          Object {
+            "dayMinus": [Function],
+            "dayPlus": [Function],
+          }
+        }
         style={Object {}}
       >
-        <button
-          className="IncButton fa fa-arrow-up"
-          onClick={[Function]}
+        <div
+          className="NumberChooser-col"
+          name="NumberChooser_year"
           style={Object {}}
-        />
-        <input
-          name="year"
-          onBlur={[Function]}
-          onChange={[Function]}
-          type="number"
-          value={2017}
-        />
-        <button
-          className="DecButton fa fa-arrow-down"
-          onClick={[Function]}
+        >
+          <button
+            className="NavButton fa fa-arrow-up"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="NumberChooser-caption"
+          >
+            year
+          </div>
+          <input
+            className="NumberChooser-input"
+            name="year"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="number"
+            value={2017}
+          />
+          <button
+            className="NavButton fa fa-arrow-down"
+            onClick={[Function]}
+            style={Object {}}
+          />
+        </div>
+        <div
+          className="NumberChooser-col"
+          name="NumberChooser_month"
           style={Object {}}
-        />
-      </div>
-      <div
-        className="col"
-        name="NumberChooser_month"
+        >
+          <button
+            className="NavButton fa fa-arrow-up"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="NumberChooser-caption"
+          >
+            month
+          </div>
+          <input
+            className="NumberChooser-input"
+            name="month"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="number"
+            value={8}
+          />
+          <button
+            className="NavButton fa fa-arrow-down"
+            onClick={[Function]}
+            style={Object {}}
+          />
+        </div>
+        <div
+          className="NumberChooser-col"
+          name="NumberChooser_day"
+          style={Object {}}
+        >
+          <button
+            className="NavButton fa fa-arrow-up"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="NumberChooser-caption"
+          >
+            day
+          </div>
+          <input
+            className="NumberChooser-input"
+            name="day"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="number"
+            value={1}
+          />
+          <button
+            className="NavButton fa fa-arrow-down"
+            onClick={[Function]}
+            style={Object {}}
+          />
+        </div>
+      </HotKeys>
+      <button
+        className="NavButton fa fa-chevron-right"
+        onClick={undefined}
         style={Object {}}
-      >
-        <button
-          className="IncButton fa fa-arrow-up"
-          onClick={[Function]}
-          style={Object {}}
-        />
-        <input
-          name="month"
-          onBlur={[Function]}
-          onChange={[Function]}
-          type="number"
-          value={8}
-        />
-        <button
-          className="DecButton fa fa-arrow-down"
-          onClick={[Function]}
-          style={Object {}}
-        />
-      </div>
-      <div
-        className="col"
-        name="NumberChooser_day"
-        style={Object {}}
-      >
-        <button
-          className="IncButton fa fa-arrow-up"
-          onClick={[Function]}
-          style={Object {}}
-        />
-        <input
-          name="day"
-          onBlur={[Function]}
-          onChange={[Function]}
-          type="number"
-          value={1}
-        />
-        <button
-          className="DecButton fa fa-arrow-down"
-          onClick={[Function]}
-          style={Object {}}
-        />
-      </div>
-    </HotKeys>
+      />
+    </div>
   </div>
 </HotKeys>
 `;

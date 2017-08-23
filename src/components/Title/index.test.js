@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
 import { shallow, mount } from 'enzyme'; 
 
-import Title from './Title';
+import Title from '.';
 
 describe('<Title />', () => {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import NumberChooser from './NumberChooser';
+import NumberChooser from '.';
 
 
 describe('<NumberChooser />', () => {

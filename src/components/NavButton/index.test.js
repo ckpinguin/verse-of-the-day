@@ -2,28 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
 import { shallow, mount } from 'enzyme'; 
+// import renderer from 'react-test-renderer';
 
-import IncButton from './IncButton';
+import DecButton from '.';
 
-describe('<IncButton />', () => {
+describe('<DecButton />', () => {
 
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<IncButton onClick={() => {}}/>, div);
+        ReactDOM.render(<DecButton onClick={() => {}}/>, div);
     });
 
     it('allows us to set props', () => {
-        const wrapper = mount(<IncButton propOne="foo" />);
+        const wrapper = mount(<DecButton propOne="foo" />);
         expect(wrapper.props().propOne).toEqual('foo');
         wrapper.setProps({ propOne: 'bonka' });
         expect(wrapper.props().propOne).toEqual('bonka');
     });
 
     it('simulates click events', () => {
-        IncButton.prototype.onButtonClicked = jest.fn();    
-        const mockClick = IncButton.prototype.onButtonClicked;
+        DecButton.prototype.onButtonClicked = jest.fn();    
+        const mockClick = DecButton.prototype.onButtonClicked;
         const wrapper = mount((
-            <IncButton onButtonClicked={mockClick} />
+            <DecButton onButtonClicked={mockClick} />
         ));
         wrapper.find('button').simulate('click');
         expect(mockClick).toHaveBeenCalled();

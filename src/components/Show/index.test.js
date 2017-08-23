@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Show from './Show';
+import Show from '.';
 
 describe('<Show />', () => {
     it('renders without crashing', () => {

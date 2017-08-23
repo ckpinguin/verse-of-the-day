@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ToggleDisplay from './ToggleDisplay';
+import ToggleDisplay from '.';
 import Dummy from './Dummy';
 
 describe('<ToggleDisplay />', () => {

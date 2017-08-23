@@ -1,20 +1,20 @@
 .App {
-  display: grid;
-  /* align-items: center; */
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  /* justify-content: center; */
-  /* grid-template-rows: 100px 200px 100px;   */
-  grid-template-rows: minmax(min-content, auto);
-  /* used to define rows or columns the implicit grid (if needed) */
-  /* grid-auto-rows: minmax(min-content, auto); */
-  /* grid-auto-rows: 0.5fr 1fr 0.5fr; */
-  
-  grid-template-areas:
-  ".....      title      .....    "
-  ".....      content    .....    "
-  ".....      handle     .....    "
-  "footer     footer     footer   ";
+    display: grid;
+    /* align-items: center; */
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    /* justify-content: center; */
+    /* grid-template-rows: 100px 200px 100px;   */
+    grid-template-rows: minmax(min-content, auto);
+    /* used to define rows or columns the implicit grid (if needed) */
+    /* grid-auto-rows: minmax(min-content, auto); */
+    /* grid-auto-rows: 0.5fr 1fr 0.5fr; */
+    
+    grid-template-areas:
+    ".....      title      .....    "
+    ".....      content    .....    "
+    ".....      handle     .....    "
+    "footer     footer     footer   ";
 }
 
 @media screen and (max-width: 40em) {
@@ -47,10 +47,10 @@
 }
 
 .App-Footer {
-  grid-area: footer;
+    grid-area: footer;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }

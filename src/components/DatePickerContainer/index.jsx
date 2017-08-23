@@ -4,15 +4,14 @@ import { HotKeys } from 'react-hotkeys';
 
 import { isDebug, debug } from '../../debug';
 
-import NumberChooser from '../NumberChooser/NumberChooser';
+import NumberChooser from '../NumberChooser';
 import DateHelper from '../../shared/DateHelper';
 
+const propTypes = {
+    date: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired
+};
 class DatePickerContainer extends Component {
-    static propTypes = {
-        date: PropTypes.object,
-        onChange: PropTypes.func.isRequired
-    };
-
     constructor(props) {
         super(props);
         this.dateObj = DateHelper.getDateObj(this.props.date);
@@ -54,12 +53,12 @@ class DatePickerContainer extends Component {
         const handlers = {
             // Currying (partial function argument application returning a function)
             // This could be done with `bind` also
-            'dayPlus':    (e) => {  },
-            'dayMinus':   (e) => {  }
+            'dayPlus':    (e) => { (this.handleChangeForField('day'))(+1); },
+            'dayMinus':   (e) => { this.handleChangeForField('day'); }
         };
         return (
             <HotKeys handlers={handlers} className="DatePicker" style={ isDebug ? debug.borderStyle : {} }>
-                {isDebug && <em>DatePicker</em>}        
+                {isDebug && <em>DatePicker</em>}     
                 <NumberChooser
                     id="year"
                     name="year"
@@ -82,4 +81,7 @@ class DatePickerContainer extends Component {
         );
     }
 }
+
+DatePickerContainer.propTypes = propTypes;
+
 export default DatePickerContainer;

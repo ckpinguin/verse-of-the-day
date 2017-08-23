@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 
 import App from './App';
 
-import Title from './components/Title/Title';
+import Title from './components/Title';
 // Mock 3rd-party-library (used as HOC)
 jest.mock('react-hotkeys', () => {
     return {
