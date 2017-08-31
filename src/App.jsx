@@ -6,12 +6,15 @@ import { isDebug, debug } from './debug';
 
 import './App.css';
 
+import DateHelper from './shared/DateHelper';
+import PreCacheImg from './shared/PreCacheImg';
+
 import Show from './components/Show';
 // import ToggleDisplay from './components/ToggleDisplay/ToggleDisplay';
 import Title from './components/Title';
-import DateHelper from './shared/DateHelper';
-import Navigator from './components/Navigator';
+import DateNavigator from './components/DateNavigator';
 import ImageView from './components/ImageView';
+
 
 export default class App extends Component {
     // API-Key for bibleserver.com API with https://our-daily-bread.herokuapp.com/
@@ -33,31 +36,30 @@ export default class App extends Component {
         };
         this.changeDay = this.changeDay.bind(this);
         this.updateDate = this.updateDate.bind(this);
+        this.prevDay = this.updateDate(this.changeDay.bind(this, -1));
+        this.nextDay = this.updateDate(this.changeDay.bind(this, +1));
     }
 
-    updateDate = (newDate) => {
-        // Don't forget, this is async!
+    updateDate(newDate) {
+        // Don't forget, setState() is async!
         this.setState ({
             date: newDate
         });
     }
 
-    // Extra currying because a function object is needed as handler
-    changeDay = (days, e) => (e) => {
+    changeDay(days) {
         // e.preventDefault(); // prevent default for subcomp. NumberChooser (just a hack for now)
         const dateObj = DateHelper.getDateObj(this.state.date);
-        this.updateDate(new Date(dateObj.year, dateObj.month-1, dateObj.day+days));
+        return new Date(dateObj.year, dateObj.month-1, dateObj.day+days);  
+        //this.updateDate(new Date(dateObj.year, dateObj.month-1, dateObj.day+days));
     }
-    // changeDayBind(days, e) {
-    //     e.preventDefault();
-    //     const dateObj = DateHelper.getDateObj(this.state.date);
-    //     this.updateDate(new Date(dateObj.year, dateObj.month-1, dateObj.day+days));
-    // }
-    // handleUpPressed = (days, e) => (e) => {
-    //     e.preventDefault();
-    //     const dateObj = DateHelper.getDateObj(this.state.date);
-    //     this.updateDate(new Date(dateObj.year, dateObj.month-1, dateObj.day+days));
-    // }
+  
+    getImgUrl() {
+        const formattedDate = DateHelper.formatDate(this.state.date, '-');
+        const url = this.urlBase + formattedDate + '.png';
+        const urlNext = this.urlBase + DateHelper.formatDate(this.state.date, '-');
+        return url;
+    }
 
     render() {
         // TODO: Make the standard up/down key binding work again in subcomponent NumberChooser
@@ -65,18 +67,11 @@ export default class App extends Component {
             'dayPlus':     ['up', 'right'],
             'dayMinus':   ['down', 'left']
         };
-        const handlers = {
-            // Currying (partial function argument application returning a function)
-            // This could be done with `bind` also
-            'dayPlus':     this.changeDay(+1),
-            'dayMinus':   this.changeDay(-1)
-        };
-        const formattedDate = DateHelper.formatDate(this.state.date, '-');
-        const url = this.urlBase + formattedDate + '.png';
+        const url = this.getImgUrl();
         return (  
             <HotKeys
                 keyMap={keyMap}
-                handlers={handlers}
+                // handlers={handlers}
                 className="App"
                 style={ isDebug ? debug.borderStyle : {} }
             >
@@ -88,18 +83,19 @@ export default class App extends Component {
                     </Show>
                 </div>
                 <div className="App-Main">
+                    <PreCacheImg
+                        images={[
+                            url,
+                        ]}
+                    /> 
                     <Show if>
-                        <ImageView
-                            url={url}
-                        />
+                        <ImageView url={url} />
                     </Show>
                 </div>
                 <div className="App-DatePicker">
-                    <Navigator 
+                    <DateNavigator
                         date={this.state.date}
-                        onChange={this.updateDate}
-                        onNext={this.changeDay(+1)}
-                        onPrev={this.changeDay(-1)}
+                        onChangeDate={this.updateDate}
                     />
                 </div>
             </HotKeys>
