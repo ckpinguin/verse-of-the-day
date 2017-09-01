@@ -9,26 +9,23 @@ import DateHelper from '../../shared/DateHelper';
 import DatePickerContainer from '../DatePickerContainer';
 import NavButton from '../NavButton';
 
-Navigator.propTypes = {
+DateNavigator.propTypes = {
     date:           PropTypes.object.isRequired,
     onChangeDate:   PropTypes.func.isRequired,
 };
 function DateNavigator({ date, onChangeDate }) {
-    const handlers = {
-        'dayPlus':     () => onChangeDate(DateHelper.getDateWithChangedDays(date, +1)),
-        'dayMinus':   () => onChangeDate(DateHelper.getDateWithChangedDays(date, -1))
-    };
+    const handleDayPlus = () => onChangeDate(DateHelper.getDateWithChangedDays(date, +1));const handleDayMinus = () => onChangeDate(DateHelper.getDateWithChangedDays(date, -1));
     return (
         <div
-            className="Navigator"
+            className="DateNavigator"
             style={isDebug ? debug.borderStyle : {}}
         >
-            <NavButton onButtonClicked={handlers.dayMinus} icon="fa fa-chevron-left" />
+            <NavButton onClick={handleDayMinus} icon="fa fa-chevron-left" />
             <DatePickerContainer 
                 date={date}
                 onChangeDate={onChangeDate}
             />
-            <NavButton onButtonClicked={handlers.dayPlus} icon="fa fa-chevron-right" />
+            <NavButton onClick={handleDayPlus} icon="fa fa-chevron-right" />
         </div>
     );
 }

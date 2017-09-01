@@ -15,32 +15,34 @@ class NumberChooser extends React.Component {
     };
     constructor(props) {
         super(props);
-        /** This state is only needed to hold value in the field 
+        /** This local state is only needed to hold value in the field 
         *   of this controlled component instead of directly updating
         *   the main state, that would update it immediately after 
         *   pressing a button  */
         this.state = { value: this.props.value };
-        this.handlers = {
-            onUpClick: this.props.onChange.bind(this, this.props.value+1),
-            onDownClick: this.props.onChange.bind(this, this.props.value-1),
-            onNumberChange: this.onNumberChange.bind(this),
-            onInputBlur: this.onInputBlur.bind(this)
-        };
-
+        // Handlers:
+        this.handleUpClick = this.props.onChange.bind(this, this.props.value+1);
+        this.handleDownClick = this.props.onChange.bind(this, this.props.value-1);
+        this.handlenumberChange = this.handleNumberChange.bind(this);
+        this.handleInputBlur = this.handleInputBlur.bind(this);
     }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.value !== this.props.value) {
             console.log('NumberChooser: setting local state with received props: ', nextProps);
             this.setState({ value: nextProps.value });
         }
     }
-    onNumberChange(e) {
+
+    handleNumberChange(e) {
         this.setState({ value: e.target.value });
         // this.props.onChange(e.target.value);
     }
-    onInputBlur(e) {
+
+    handleInputBlur(e) {
         this.props.onChange(e.target.value);
     }
+
     render() {
         return (
             <div
@@ -49,7 +51,7 @@ class NumberChooser extends React.Component {
                 style={ isDebug ? debug.borderStyle : {} }
             >       
                 <NavButton
-                    onClick={this.handlers.onUpClick}
+                    onClick={this.handleUpClick}
                     icon="fa fa-arrow-up"
                 />
                 <div className="NumberChooser-caption">{this.props.name}</div>
@@ -58,11 +60,11 @@ class NumberChooser extends React.Component {
                     name={this.props.name}
                     type="number"
                     value={this.state.value}
-                    onChange={this.handlers.onNumberChange}
-                    onBlur={this.handlers.onInputBlur}
+                    onChange={this.handlenumberChange}
+                    onBlur={this.handleInputBlur}
                 />
                 <NavButton
-                    onClick={this.handlers.onDownClick}
+                    onClick={this.handleDownClick}
                     icon="fa fa-arrow-down"
                 />
             </div>

@@ -33,6 +33,7 @@ export default class App extends Component {
         this.state = {
             date: props.date 
         };
+        // Handlers:
         this.updateDate = this.updateDate.bind(this);
     }
 

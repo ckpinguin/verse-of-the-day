@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Navigator from '.';
+import DateNavigator from '.';
 
 
-describe('<Navigator />', () => {
+describe('<DateNavigator />', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        const onChange = () => console.log('onChange called');
-        ReactDOM.render(<Navigator date={new Date()} onChange={onChange} />, div);
+        const onChangeDate = () => console.log('onChange called');
+        ReactDOM.render(<DateNavigator date={new Date()} onChangeDate={onChangeDate} />, div);
     });
 });

@@ -14,60 +14,70 @@ class DatePickerContainer extends Component {
     constructor(props) {
         super(props);
         this.dateObj = DateHelper.getDateObj(this.props.date);
+        // Handlers:
+        this.handleYearChange = this.handleYearChange.bind(this);
+        this.handleMonthChange = this.handleMonthChange.bind(this);
+        this.handleDayChange = this.handleDayChange.bind(this);
+        this.handleFieldChange = this.handleFieldChange.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
         // TODO: The comparison needs to be done on year/month/day
         // if (nextProps.date != this.props.date) {
-            console.log('DatePickerContainer: receiving props: ', nextProps);
-            this.dateObj = DateHelper.getDateObj(nextProps.date);
-            console.log('DatePickerContainer: updated this.dateObj: ', this.dateObj);
+        console.log('DatePickerContainer: receiving props: ', nextProps);
+        this.dateObj = DateHelper.getDateObj(nextProps.date);
+        console.log('DatePickerContainer: updated this.dateObj: ', this.dateObj);
         //}
     }
 
-    handleChangeForField = (field) => (value) => {
+    handleYearChange(value) {
+        const newDate = new Date(value, this.dateObj.month-1, this.dateObj.day);
+        this.dateObj = newDate;
+        this.props.onChangeDate(newDate);
+    }
+    
+    handleMonthChange(value) {
+        const newDate = new Date(this.dateObj.year, value-1, this.dateObj.day);
+        this.props.onChangeDate(newDate);                
+    }
+
+    handleDayChange(value) {
+        const newDate = new Date(this.dateObj.year, this.dateObj.month-1, value);
+        this.props.onChangeDate(newDate);     
+    }
+    
+    handleFieldChange(field) {
         let newDate = null;
-        switch ( field ) {
-        // In any case, correct month -1 (month in Date is 0 based!)
-        /** new Date() is automatically converting dates with "overflow"
+        // return curried function
+        return (value) => {
+            
+            switch ( field ) {
+            // In any case, correct month -1 (month in Date is 0 based!)
+            /** new Date() is automatically converting dates with "overflow"
          * values into valid dates (e.g. day=35 becomes day=4 of the next
          * month)
         */
-        case 'year':
-            console.log('DatePickerContainer: change for field year ', value);
-            newDate = new Date(value, this.dateObj.month-1, this.dateObj.day);
-            break;
-        case 'month':
-            console.log('DatePickerContainer: change for field month ', value);
-            newDate = new Date(this.dateObj.year, value-1, this.dateObj.day);
-            break;
-        case 'day':
-            console.log('DatePickerContainer: change for field day ', value);
-            newDate = new Date(this.dateObj.year, this.dateObj.month-1, value);
-            break;
-        default:
-            break;
-        }
-        console.log('DatePickerContainer: calling update with: ', this.dateObj);
-        this.props.onChangeDate(newDate);
+            case 'year':
+                console.log('DatePickerContainer: change for field year ', value);
+                newDate = new Date(value, this.dateObj.month-1, this.dateObj.day);
+                break;
+            case 'month':
+                console.log('DatePickerContainer: change for field month ', value);
+                newDate = new Date(this.dateObj.year, value-1, this.dateObj.day);
+                break;
+            case 'day':
+                console.log('DatePickerContainer: change for field day ', value);
+                newDate = new Date(this.dateObj.year, this.dateObj.month-1, value);
+                break;
+            default:
+                break;
+            }
+            console.log('DatePickerContainer: calling update with: ', this.dateObj);
+            this.props.onChangeDate(newDate);
+        };
     }
 
     render() {
-        const handlers = {
-            changeYear: (value) => {
-                const newDate = new Date(value, this.dateObj.month-1, this.dateObj.day);
-                this.dateObj = newDate;
-                this.props.onChangeDate(newDate);
-            },
-            changeMonth: (value) => {
-                const newDate = new Date(this.dateObj.year, value-1, this.dateObj.day);
-                this.props.onChangeDate(newDate);                
-            },
-            changeDay: (value) => {
-                const newDate = new Date(this.dateObj.year, this.dateObj.month-1, value);
-                this.props.onChangeDate(newDate);                
-            }
-        };
         const { year, month, day } = this.dateObj;
         return (
             <div
@@ -77,19 +87,19 @@ class DatePickerContainer extends Component {
                     id="year"
                     name="year"
                     value={year}
-                    onChange={handlers.changeYear}
+                    onChange={this.handleYearChange}
                 />
                 <NumberChooser
                     id="month"
                     name="month"
                     value={month}
-                    onChange={this.handleChangeForField('month')}
+                    onChange={this.handleFieldChange('month')}
                 />
                 <NumberChooser
                     id="day"
                     name="day"
                     value={day}
-                    onChange={this.handleChangeForField('day')}
+                    onChange={this.handleDayChange}
                 />
             </div>
         );

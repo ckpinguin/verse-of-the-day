@@ -52,7 +52,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
     className="App-DatePicker"
   >
     <div
-      className="Navigator"
+      className="DateNavigator"
       style={Object {}}
     >
       <button
@@ -60,14 +60,8 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         onClick={[Function]}
         style={Object {}}
       />
-      <HotKeys
+      <div
         className="DatePicker"
-        handlers={
-          Object {
-            "dayMinus": [Function],
-            "dayPlus": [Function],
-          }
-        }
         style={Object {}}
       >
         <div
@@ -157,7 +151,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
             style={Object {}}
           />
         </div>
-      </HotKeys>
+      </div>
       <button
         className="NavButton fa fa-chevron-right"
         onClick={[Function]}

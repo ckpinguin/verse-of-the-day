@@ -6,6 +6,7 @@ import renderer from 'react-test-renderer';
 import App from './App';
 
 import Title from './components/Title';
+
 // Mock 3rd-party-library (used as HOC)
 jest.mock('react-hotkeys', () => {
     return {
@@ -33,7 +34,7 @@ describe('<App />', () => {
         //ReactDOM.render(<App />, div);
         ReactTestUtils.renderIntoDocument(<App/>);
     });    
-    it('mounts successfully', () => {
+    it('mounts successfully (full rendering)', () => {
         const wrapper = mount(<App />);
         const welcome = <h2>Our daily bread</h2>;        
         expect(wrapper).toContainReact(welcome);

@@ -4,27 +4,36 @@ import ReactTestUtils from 'react-dom/test-utils';
 import { shallow, mount } from 'enzyme'; 
 // import renderer from 'react-test-renderer';
 
-import DecButton from '.';
+import NavButton from '.';
 
-describe('<DecButton />', () => {
+describe('<NavButton />', () => {
 
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<DecButton onClick={() => {}}/>, div);
+        ReactDOM.render(
+            <NavButton
+                onClick={() => {}}
+            />, div);
     });
 
     it('allows us to set props', () => {
-        const wrapper = mount(<DecButton propOne="foo" />);
+        const wrapper = mount(
+            <NavButton
+                propOne="foo"
+            />);
         expect(wrapper.props().propOne).toEqual('foo');
         wrapper.setProps({ propOne: 'bonka' });
         expect(wrapper.props().propOne).toEqual('bonka');
     });
 
     it('simulates click events', () => {
-        DecButton.prototype.onButtonClicked = jest.fn();    
-        const mockClick = DecButton.prototype.onButtonClicked;
+        NavButton.prototype.onClick = jest.fn();    
+        const mockClick = NavButton.prototype.onClick;
         const wrapper = mount((
-            <DecButton onButtonClicked={mockClick} />
+            <NavButton
+                onClick={mockClick}
+                icon="fa fa-arrow-up"
+            />
         ));
         wrapper.find('button').simulate('click');
         expect(mockClick).toHaveBeenCalled();
