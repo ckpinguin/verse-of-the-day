@@ -6,9 +6,8 @@ import { isDebug, debug } from './debug';
 
 import './App.css';
 
-import DateHelper from './shared/DateHelper';
 import PreCacheImg from './shared/PreCacheImg';
-
+import { randomDate, formatDate, getDateWithChangedDays } from './shared/DateHelper';
 import Show from './components/Show';
 // import ToggleDisplay from './components/ToggleDisplay/ToggleDisplay';
 import Title from './components/Title';
@@ -24,7 +23,7 @@ export default class App extends Component {
         date:   PropTypes.object
     }
     static defaultProps = {
-        date:   DateHelper.randomDate()
+        date:   randomDate()
     }
     
     constructor(props) {
@@ -46,9 +45,9 @@ export default class App extends Component {
     }
   
     getImgUrl() {
-        const formattedDate = DateHelper.formatDate(this.state.date, '-');
+        const formattedDate = formatDate(this.state.date, '-');
         const url = this.urlBase + formattedDate + '.png';
-        const urlNext = this.urlBase + DateHelper.formatDate(this.state.date, '-');
+        const urlNext = this.urlBase + formatDate(this.state.date, '-');
         return url;
     }
 
@@ -59,8 +58,8 @@ export default class App extends Component {
             'dayMinus':   ['down', 'left']
         };
         const handlers = {
-            'dayPlus':     () => this.updateDate(DateHelper.getDateWithChangedDays(this.state.date, +1)),
-            'dayMinus':   () => this.updateDate(DateHelper.getDateWithChangedDays(this.state.date, -1))
+            'dayPlus':     () => this.updateDate(getDateWithChangedDays(this.state.date, +1)),
+            'dayMinus':   () => this.updateDate(getDateWithChangedDays(this.state.date, -1))
         };
         const url = this.getImgUrl();
         return (  

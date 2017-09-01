@@ -57,4 +57,11 @@ const DateHelper = {
     formatDate,
     getDateWithChangedDays
 };
-export default DateHelper;
+
+module.exports = {
+    randomDate: randomDate,
+    getDateObj: getDateObj,
+    formatDate: formatDate,
+    getDateWithChangedDays: getDateWithChangedDays
+};
+//export default DateHelper;
