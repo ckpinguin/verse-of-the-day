@@ -21,9 +21,9 @@ class NumberChooser extends React.Component {
         *   pressing a button  */
         this.state = { value: this.props.value };
         // Handlers:
-        this.handleUpClick = this.props.onChange.bind(this, this.props.value+1);
-        this.handleDownClick = this.props.onChange.bind(this, this.props.value-1);
-        this.handlenumberChange = this.handleNumberChange.bind(this);
+        this.handleUpClick = () => this.props.onChange(this.props.value+1);
+        this.handleDownClick = () => this.props.onChange(this.props.value-1);
+        this.handleNumberChange = this.handleNumberChange.bind(this);
         this.handleInputBlur = this.handleInputBlur.bind(this);
     }
 
@@ -35,6 +35,8 @@ class NumberChooser extends React.Component {
     }
 
     handleNumberChange(e) {
+        // Only update local state for display
+        // Update to model state will be done with onBlur()
         this.setState({ value: e.target.value });
         // this.props.onChange(e.target.value);
     }
@@ -60,7 +62,7 @@ class NumberChooser extends React.Component {
                     name={this.props.name}
                     type="number"
                     value={this.state.value}
-                    onChange={this.handlenumberChange}
+                    onChange={this.handleNumberChange}
                     onBlur={this.handleInputBlur}
                 />
                 <NavButton
