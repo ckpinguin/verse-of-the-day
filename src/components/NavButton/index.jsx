@@ -7,17 +7,17 @@ import { isDebug, debug } from '../../debug';
 
 NavButton.propTypes = {
     icon: PropTypes.string,
-    onButtonClicked: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired
 };
 NavButton.defaultProps = {
     icon: 'fa fa-question'
 };
-function NavButton({ icon, onButtonClicked }) {
+function NavButton({ icon, onClick }) {
     return (
         <button
             className={`NavButton ${icon}`}
             style={ isDebug ? debug.borderStyle : {} }
-            onClick={onButtonClicked}
+            onClick={onClick}
         />
     );
 }

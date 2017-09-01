@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { HotKeys } from 'react-hotkeys';
 
 import { isDebug, debug } from '../../debug';
 
@@ -9,7 +8,7 @@ import DateHelper from '../../shared/DateHelper';
 
 const propTypes = {
     date: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChangeDate: PropTypes.func.isRequired
 };
 class DatePickerContainer extends Component {
     constructor(props) {
@@ -18,14 +17,15 @@ class DatePickerContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        // console.log('receiving props: ', nextProps);
-        this.dateObj = DateHelper.getDateObj(nextProps.date);
+        // TODO: The comparison needs to be done on year/month/day
+        // if (nextProps.date != this.props.date) {
+            console.log('DatePickerContainer: receiving props: ', nextProps);
+            this.dateObj = DateHelper.getDateObj(nextProps.date);
+            console.log('DatePickerContainer: updated this.dateObj: ', this.dateObj);
+        //}
     }
 
     handleChangeForField = (field) => (value) => {
-        const dateObj = DateHelper.getDateObj(this.props.date);
-        // let value = Math.max(newValue, 0) % DateHelper.maxValues[field];
-        // value = Math.min(value, DateHelper.maxValues[field]);
         let newDate = null;
         switch ( field ) {
         // In any case, correct month -1 (month in Date is 0 based!)
@@ -34,36 +34,50 @@ class DatePickerContainer extends Component {
          * month)
         */
         case 'year':
-            newDate = new Date(value, dateObj.month-1, dateObj.day);
+            console.log('DatePickerContainer: change for field year ', value);
+            newDate = new Date(value, this.dateObj.month-1, this.dateObj.day);
             break;
         case 'month':
-            newDate = new Date(dateObj.year, value-1, dateObj.day);
+            console.log('DatePickerContainer: change for field month ', value);
+            newDate = new Date(this.dateObj.year, value-1, this.dateObj.day);
             break;
         case 'day':
-            newDate = new Date(dateObj.year, dateObj.month-1, value);
+            console.log('DatePickerContainer: change for field day ', value);
+            newDate = new Date(this.dateObj.year, this.dateObj.month-1, value);
             break;
         default:
             break;
         }
-        this.props.onChange(newDate);
+        console.log('DatePickerContainer: calling update with: ', this.dateObj);
+        this.props.onChangeDate(newDate);
     }
 
     render() {
-        const { year, month, day } = this.dateObj;
         const handlers = {
-            // Currying (partial function argument application returning a function)
-            // This could be done with `bind` also
-            'dayPlus':    (e) => { (this.handleChangeForField('day'))(+1); },
-            'dayMinus':   (e) => { this.handleChangeForField('day'); }
+            changeYear: (value) => {
+                const newDate = new Date(value, this.dateObj.month-1, this.dateObj.day);
+                this.dateObj = newDate;
+                this.props.onChangeDate(newDate);
+            },
+            changeMonth: (value) => {
+                const newDate = new Date(this.dateObj.year, value-1, this.dateObj.day);
+                this.props.onChangeDate(newDate);                
+            },
+            changeDay: (value) => {
+                const newDate = new Date(this.dateObj.year, this.dateObj.month-1, value);
+                this.props.onChangeDate(newDate);                
+            }
         };
+        const { year, month, day } = this.dateObj;
         return (
-            <HotKeys handlers={handlers} className="DatePicker" style={ isDebug ? debug.borderStyle : {} }>
+            <div
+                className="DatePicker" style={ isDebug ? debug.borderStyle : {} }>
                 {isDebug && <em>DatePicker</em>}     
                 <NumberChooser
                     id="year"
                     name="year"
                     value={year}
-                    onChange={this.handleChangeForField('year')}
+                    onChange={handlers.changeYear}
                 />
                 <NumberChooser
                     id="month"
@@ -77,7 +91,7 @@ class DatePickerContainer extends Component {
                     value={day}
                     onChange={this.handleChangeForField('day')}
                 />
-            </HotKeys>
+            </div>
         );
     }
 }

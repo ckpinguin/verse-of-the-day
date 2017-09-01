@@ -34,24 +34,15 @@ export default class App extends Component {
         this.state = {
             date: props.date 
         };
-        this.changeDay = this.changeDay.bind(this);
         this.updateDate = this.updateDate.bind(this);
-        this.prevDay = this.updateDate(this.changeDay.bind(this, -1));
-        this.nextDay = this.updateDate(this.changeDay.bind(this, +1));
     }
 
     updateDate(newDate) {
+        console.log('App: updating state: ', newDate);
         // Don't forget, setState() is async!
         this.setState ({
             date: newDate
         });
-    }
-
-    changeDay(days) {
-        // e.preventDefault(); // prevent default for subcomp. NumberChooser (just a hack for now)
-        const dateObj = DateHelper.getDateObj(this.state.date);
-        return new Date(dateObj.year, dateObj.month-1, dateObj.day+days);  
-        //this.updateDate(new Date(dateObj.year, dateObj.month-1, dateObj.day+days));
     }
   
     getImgUrl() {
@@ -67,11 +58,15 @@ export default class App extends Component {
             'dayPlus':     ['up', 'right'],
             'dayMinus':   ['down', 'left']
         };
+        const handlers = {
+            'dayPlus':     () => this.updateDate(DateHelper.getDateWithChangedDays(this.state.date, +1)),
+            'dayMinus':   () => this.updateDate(DateHelper.getDateWithChangedDays(this.state.date, -1))
+        };
         const url = this.getImgUrl();
         return (  
             <HotKeys
                 keyMap={keyMap}
-                // handlers={handlers}
+                handlers={handlers}
                 className="App"
                 style={ isDebug ? debug.borderStyle : {} }
             >
@@ -101,5 +96,4 @@ export default class App extends Component {
             </HotKeys>
         );
     }
-    
 }

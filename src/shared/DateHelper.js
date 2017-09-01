@@ -39,6 +39,11 @@ const formatDate = (date, delim='.') => {
             + delim + zeroFill(date.getDate());
 };
 
+const getDateWithChangedDays = (date, days) => {
+    const dateObj = DateHelper.getDateObj(date);
+    return new Date(dateObj.year, dateObj.month-1, dateObj.day+days);
+};
+
 const zeroFill = (i) => {
     return (i < 10 ? '0' : '') + i;
 };
@@ -49,6 +54,7 @@ const DateHelper = {
     randomDateBetween,
     randomDate,
     getDateObj,
-    formatDate
+    formatDate,
+    getDateWithChangedDays
 };
 export default DateHelper;
