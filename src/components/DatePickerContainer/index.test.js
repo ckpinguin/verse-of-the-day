@@ -6,9 +6,14 @@ import DateHelper from '../../shared/DateHelper';
 
 describe('<DatePickerContainer />', () => {
     it('renders without crashing', () => {
+
         const date = DateHelper.randomDate();
         const div = document.createElement('div');
-        const onChange = () => console.log('onChange called');
-        ReactDOM.render(<DatePickerContainer onChange={onChange} date={date}/>, div);
+        const onChangeDate = () => console.log('onChangeDate() fired');
+        ReactDOM.render(
+            <DatePickerContainer
+                onChangeDate={onChangeDate}
+                date={date}
+            />, div);   
     });
 });

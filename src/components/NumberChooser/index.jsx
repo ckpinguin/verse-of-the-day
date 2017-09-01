@@ -35,10 +35,10 @@ class NumberChooser extends React.Component {
     }
 
     handleNumberChange(e) {
-        // Only update local state for display
+        // Only update the local state for display
         // Update to model state will be done with onBlur()
         this.setState({ value: e.target.value });
-        // this.props.onChange(e.target.value);
+        // this.props.onChange(e.target.value); // don't do this!
     }
 
     handleInputBlur(e) {

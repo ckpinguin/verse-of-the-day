@@ -5,7 +5,7 @@ import { isDebug, debug } from '../../debug';
 
 import './index.css';
 
-import DateHelper from '../../shared/DateHelper';
+import { getDateWithChangedDays } from '../../shared/DateHelper';
 import DatePickerContainer from '../DatePickerContainer';
 import NavButton from '../NavButton';
 
@@ -14,7 +14,7 @@ DateNavigator.propTypes = {
     onChangeDate:   PropTypes.func.isRequired,
 };
 function DateNavigator({ date, onChangeDate }) {
-    const handleDayPlus = () => onChangeDate(DateHelper.getDateWithChangedDays(date, +1));const handleDayMinus = () => onChangeDate(DateHelper.getDateWithChangedDays(date, -1));
+    const handleDayPlus = () => onChangeDate(getDateWithChangedDays(date, +1));const handleDayMinus = () => onChangeDate(getDateWithChangedDays(date, -1));
     return (
         <div
             className="DateNavigator"

@@ -37,29 +37,22 @@ describe('<NumberChooser />', () => {
         expect(wrapper.props().value).toEqual(12);
     });
 
-/*     it('onUpClick can be called', () => {
+    it('onUpClick can be called', () => {
         // const div = document.createElement('div');
         const name = 'testday';
         const value = 11;
-        const onChange = () => console.log('onChange called');
-        // ReactDOM.render(
-            <NumberChooser
-                onChange={onChange}
-                id={name}
-                name={name}
-                value={value}
-            />, div);
-        NumberChooser.prototype.onUpClick = jest.fn();    
-        const mockClick = NumberChooser.prototype.onUpClick;
+        // const onChange = () => console.log('onChange called');
+        NumberChooser.prototype.onChange = jest.fn();    
+        const mockChange = NumberChooser.prototype.onChange;
         const wrapper = mount((
             <NumberChooser
-                onChange={onChange}
+                onChange={mockChange}
                 id={name}
                 name={name}
                 value={value}
             />
         ));
         wrapper.find('NavButton').simulate('click');
-        expect(mockClick).toHaveBeenCalled();
-    }); */
+        expect(mockChange).toHaveBeenCalled();
+    });
 });

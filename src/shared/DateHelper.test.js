@@ -1,14 +1,14 @@
-import DateHelper from './DateHelper';
+import * as DateHelper from './DateHelper';
 import _ from 'lodash';
 
 describe('DateHelper', () => {
     it('adds zeroes correctly', () => {
-        expect(DateHelper.zeroFill(1)).toBe('01');
+        expect(DateHelper._zeroFill(1)).toBe('01');
     });
 
     it('creates specific random date between 01.01.2014 and 31.12.2017', () => {
         // beware of 0-based month!
-        const date = DateHelper.randomDateBetween(new Date(2014, 0, 1), new Date(2017, 11, 31));
+        const date = DateHelper._randomDateBetween(new Date(2014, 0, 1), new Date(2017, 11, 31));
         // console.log(DateHelper.getDateObj(date));
         expect(_.isObject(date));
         expect(date.getFullYear()).toBeLessThanOrEqual(2017);
@@ -17,11 +17,11 @@ describe('DateHelper', () => {
 
     it('creates a random date with min. and max. year', () => {
         const date = new Date(
-            DateHelper.minValues['year'],
-            DateHelper.minValues['month'],
-            DateHelper.minValues['day']
+            DateHelper._minValues['year'],
+            DateHelper._minValues['month'],
+            DateHelper._minValues['day']
         );
-        expect(date.getFullYear()).toBeGreaterThanOrEqual(DateHelper.minValues['year']);        
+        expect(date.getFullYear()).toBeGreaterThanOrEqual(DateHelper._minValues['year']);        
         expect(date.getFullYear()).toBeLessThanOrEqual(new Date().getFullYear());
     });
 

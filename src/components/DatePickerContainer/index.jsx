@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { isDebug, debug } from '../../debug';
 
 import NumberChooser from '../NumberChooser';
-import DateHelper from '../../shared/DateHelper';
+import { getDateObj } from '../../shared/DateHelper';
 
 const propTypes = {
     date: PropTypes.object.isRequired,
@@ -13,7 +13,7 @@ const propTypes = {
 class DatePickerContainer extends Component {
     constructor(props) {
         super(props);
-        this.dateObj = DateHelper.getDateObj(this.props.date);
+        this.dateObj = getDateObj(this.props.date);
         // Handlers:
         this.handleYearChange = this.handleYearChange.bind(this);
         this.handleMonthChange = this.handleMonthChange.bind(this);
@@ -25,7 +25,7 @@ class DatePickerContainer extends Component {
         // TODO: The comparison needs to be done on year/month/day
         // if (nextProps.date != this.props.date) {
         console.log('DatePickerContainer: receiving props: ', nextProps);
-        this.dateObj = DateHelper.getDateObj(nextProps.date);
+        this.dateObj = getDateObj(nextProps.date);
         console.log('DatePickerContainer: updated this.dateObj: ', this.dateObj);
         //}
     }

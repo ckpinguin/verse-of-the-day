@@ -17,8 +17,10 @@ describe('<NavButton />', () => {
     });
 
     it('allows us to set props', () => {
+        const onClick = () => console.log('onClick() fired');
         const wrapper = mount(
             <NavButton
+                onClick={onClick}
                 propOne="foo"
             />);
         expect(wrapper.props().propOne).toEqual('foo');

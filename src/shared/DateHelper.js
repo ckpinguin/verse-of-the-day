@@ -40,7 +40,7 @@ const formatDate = (date, delim='.') => {
 };
 
 const getDateWithChangedDays = (date, days) => {
-    const dateObj = DateHelper.getDateObj(date);
+    const dateObj = getDateObj(date);
     return new Date(dateObj.year, dateObj.month-1, dateObj.day+days);
 };
 
@@ -48,20 +48,14 @@ const zeroFill = (i) => {
     return (i < 10 ? '0' : '') + i;
 };
 
-const DateHelper = {
-    maxValues,
-    minValues,
-    randomDateBetween,
-    randomDate,
-    getDateObj,
-    formatDate,
-    getDateWithChangedDays
-};
-
+// exports with _ are private functions exported for testing purposes
+// no nice solution yet for that quirk, other solutions are much worse imho
 module.exports = {
+    _zeroFill: zeroFill,
+    _randomDateBetween: randomDateBetween,
+    _minValues: minValues,
     randomDate: randomDate,
     getDateObj: getDateObj,
     formatDate: formatDate,
     getDateWithChangedDays: getDateWithChangedDays
 };
-//export default DateHelper;
