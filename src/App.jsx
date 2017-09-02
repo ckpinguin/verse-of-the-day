@@ -51,6 +51,7 @@ export default class App extends Component {
         return url;
     }
 
+
     render() {
         // TODO: Make the standard up/down key binding work again in subcomponent NumberChooser
         const keyMap = {
@@ -59,11 +60,13 @@ export default class App extends Component {
         };
         const handlers = {
             'dayPlus':    () => this.updateDate(getDateWithChangedDays(this.state.date, +1)),
-            'dayMinus':   () => this.updateDate(getDateWithChangedDays(this.state.date, -1))
+            'dayMinus':   () => this.updateDate(getDateWithChangedDays(this.state.date, -1)),
+            'mouseWheel': (e) => e.deltaY > 0 ? handlers.dayMinus() : handlers.dayPlus()
         };
         const url = this.getImgUrl();
         return (  
             <HotKeys
+                onWheel={handlers.mouseWheel}
                 keyMap={keyMap}
                 handlers={handlers}
                 className="App"
@@ -83,7 +86,9 @@ export default class App extends Component {
                         ]}
                     /> 
                     <Show if>
-                        <ImageView url={url} />
+                        <ImageView
+                            url={url}
+                        />
                     </Show>
                 </div>
                 <div className="App-DatePicker">
