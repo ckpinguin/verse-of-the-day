@@ -10,7 +10,8 @@ Usage example:
 </Show>
 */
 Show.propTypes = {
-    if: PropTypes.bool
+    if: PropTypes.bool,
+    children: PropTypes.any.isRequired
 };
 Show.defaultProps = {
     if: true
@@ -24,7 +25,11 @@ function Show(props) {
     // style.display = 'none';
     
     return (
-        React.cloneElement(props.children, { style: {style} })
+        <div>
+            {React.Children.map(props.children, (child, i) => {
+                return React.cloneElement(child, { style: {style} });
+            })}
+        </div>
     );
 }
 export default Show;

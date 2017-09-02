@@ -52,7 +52,7 @@ describe('<NumberChooser />', () => {
                 value={value}
             />
         ));
-        wrapper.find('NavButton').simulate('click');
+        wrapper.find('button').simulate('click');
         expect(mockChange).toHaveBeenCalled();
     });
 });

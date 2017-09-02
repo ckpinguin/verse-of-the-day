@@ -6,5 +6,4 @@ const debug = {
         margin: '5px'
     }
 };
-// export { debug, isDebug };
 export { debug, isDebug };

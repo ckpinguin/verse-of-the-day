@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { isDebug, debug } from '../../debug';
 
-import './index.css';
+import './DateNavigator.css';
 
 import { getDateWithChangedDays } from '../../shared/DateHelper';
 import DatePickerContainer from '../DatePickerContainer';

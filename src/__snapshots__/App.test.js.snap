@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
-<HotKeys
+<hotkeys
   className="App"
   handlers={
     Object {
@@ -26,26 +26,34 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
   <div
     className="App-Title"
   >
-    <div
-      className="Title"
-      style={Object {}}
-    >
-      <h2>
-        Our daily bread
-      </h2>
+    <div>
+      <div
+        className="Title"
+        style={Object {}}
+      >
+        <h2>
+          Our daily bread
+        </h2>
+      </div>
+      <p>
+        Test 
+        [object Object]
+      </p>
     </div>
   </div>
   <div
     className="App-Main"
   >
-    <div
-      className="ImageView"
-      style={Object {}}
-    >
-      <img
-        alt="Daily Bread"
-        src="https://logos.com/media/VerseOfTheDay/768x432/2017-08-01.png"
-      />
+    <div>
+      <div
+        className="ImageView"
+        style={Object {}}
+      >
+        <img
+          alt="Daily Bread"
+          src="https://logos.com/media/VerseOfTheDay/768x432/2017-08-01.png"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -159,5 +167,5 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
       />
     </div>
   </div>
-</HotKeys>
+</hotkeys>
 `;

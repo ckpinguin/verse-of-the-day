@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 PreCacheImg.propTypes = {
-    images: PropTypes.arrayOf.isRequired,
+    images: PropTypes.array.isRequired,
 };
 
 function PreCacheImg(props) {

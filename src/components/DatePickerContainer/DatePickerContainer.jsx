@@ -15,9 +15,6 @@ class DatePickerContainer extends Component {
         super(props);
         this.dateObj = getDateObj(this.props.date);
         // Handlers:
-        this.handleYearChange = this.handleYearChange.bind(this);
-        this.handleMonthChange = this.handleMonthChange.bind(this);
-        this.handleDayChange = this.handleDayChange.bind(this);
         this.handleFieldChange = this.handleFieldChange.bind(this);
     }
 
@@ -28,22 +25,6 @@ class DatePickerContainer extends Component {
         this.dateObj = getDateObj(nextProps.date);
         console.log('DatePickerContainer: updated this.dateObj: ', this.dateObj);
         //}
-    }
-
-    handleYearChange(value) {
-        const newDate = new Date(value, this.dateObj.month-1, this.dateObj.day);
-        this.dateObj = newDate;
-        this.props.onChangeDate(newDate);
-    }
-    
-    handleMonthChange(value) {
-        const newDate = new Date(this.dateObj.year, value-1, this.dateObj.day);
-        this.props.onChangeDate(newDate);                
-    }
-
-    handleDayChange(value) {
-        const newDate = new Date(this.dateObj.year, this.dateObj.month-1, value);
-        this.props.onChangeDate(newDate);     
     }
     
     handleFieldChange(field) {
@@ -87,7 +68,7 @@ class DatePickerContainer extends Component {
                     id="year"
                     name="year"
                     value={year}
-                    onChange={this.handleYearChange}
+                    onChange={this.handleFieldChange('year')}
                 />
                 <NumberChooser
                     id="month"
@@ -99,7 +80,7 @@ class DatePickerContainer extends Component {
                     id="day"
                     name="day"
                     value={day}
-                    onChange={this.handleDayChange}
+                    onChange={this.handleFieldChange('day')}
                 />
             </div>
         );

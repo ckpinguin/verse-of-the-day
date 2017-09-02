@@ -9,7 +9,7 @@ import './App.css';
 import PreCacheImg from './shared/PreCacheImg';
 import { randomDate, formatDate, getDateWithChangedDays } from './shared/DateHelper';
 import Show from './components/Show';
-// import ToggleDisplay from './components/ToggleDisplay/ToggleDisplay';
+import { Dummy } from './components/ToggleDisplay';
 import Title from './components/Title';
 import DateNavigator from './components/DateNavigator';
 import ImageView from './components/ImageView';
@@ -75,6 +75,7 @@ export default class App extends Component {
                         <Title
                             value={this.title}
                         />
+                        <Dummy prop1="one"/>                        
                     </Show>
                 </div>
                 <div className="App-Main">

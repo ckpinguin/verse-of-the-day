@@ -2,7 +2,7 @@ import React from 'react';
 
 function Dummy(props) {
     return (
-        <p>Test</p>
+        <p>Test {`${props}`}</p>
     );
 }
 export default Dummy;

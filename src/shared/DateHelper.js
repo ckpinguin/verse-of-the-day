@@ -50,6 +50,7 @@ const zeroFill = (i) => {
 
 // exports with _ are private functions exported for testing purposes
 // no nice solution yet for that quirk, other solutions are much worse imho
+// Beware: With webpack2, module.exports cannot be mixed with any 'import' (ES6-style)!
 module.exports = {
     _zeroFill: zeroFill,
     _randomDateBetween: randomDateBetween,

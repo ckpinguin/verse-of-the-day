@@ -10,7 +10,13 @@ import Title from './components/Title';
 // Mock 3rd-party-library (used as HOC)
 jest.mock('react-hotkeys', () => {
     return {
-        HotKeys: 'HotKeys',
+        
+        /**
+         * Toggling the display for any HTML-Tags.
+         * This component was copied deliberately from https://github.com/ccnokes/react-toggle-display
+         */
+
+        HotKeys: 'hotkeys'
     };
 });
 
