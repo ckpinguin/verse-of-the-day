@@ -37,7 +37,7 @@ export default class App extends Component {
     }
 
     updateDate(newDate) {
-        console.log('App: updating state: ', newDate);
+        if (isDebug) console.log('App: updating state: ', newDate);
         // Don't forget, setState() is async!
         this.setState ({
             date: newDate

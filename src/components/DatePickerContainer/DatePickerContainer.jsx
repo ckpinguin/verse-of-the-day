@@ -21,9 +21,9 @@ class DatePickerContainer extends Component {
     componentWillReceiveProps(nextProps) {
         // TODO: The comparison needs to be done on year/month/day
         // if (nextProps.date != this.props.date) {
-        console.log('DatePickerContainer: receiving props: ', nextProps);
+        // console.log('DatePickerContainer: receiving props: ', nextProps);
         this.dateObj = getDateObj(nextProps.date);
-        console.log('DatePickerContainer: updated this.dateObj: ', this.dateObj);
+        // console.log('DatePickerContainer: updated this.dateObj: ', this.dateObj);
         //}
     }
     

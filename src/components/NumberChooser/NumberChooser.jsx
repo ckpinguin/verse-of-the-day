@@ -29,7 +29,7 @@ class NumberChooser extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.value !== this.props.value) {
-            console.log('NumberChooser: setting local state with received props: ', nextProps);
+            // console.log('NumberChooser: setting local state with received props: ', nextProps);
             this.setState({ value: nextProps.value });
         }
     }
