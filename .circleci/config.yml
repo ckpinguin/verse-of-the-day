@@ -113,6 +113,8 @@ jobs:
               cp -R build to_push
               git config --global user.email "ckpinguin@circleci.com"
               git config --global user.name "Chrigi"
+              echo "just a dummy change, in order for push to work" > to_push/push.txt
+              echo $(date) >> to_push/push.txt
               git add to_push
               git commit -m "deploy"
               git push heroku `git subtree split --prefix to_push master`:master --force
