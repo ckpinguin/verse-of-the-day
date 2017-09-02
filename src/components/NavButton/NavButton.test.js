@@ -8,6 +8,19 @@ import NavButton from '.';
 
 describe('<NavButton />', () => {
 
+    let props;
+    let mountedNavButton;
+    const onClick=() => {};
+    const navButton = () => {
+        if (!mountedNavButton) {
+            mountedNavButton = mount(
+                <NavButton
+                    onClick={onClick}
+                />
+            );
+        }
+        return mountedNavButton;
+    }
     it('renders without crashing', () => {
         const div = document.createElement('div');
         ReactDOM.render(
@@ -16,6 +29,8 @@ describe('<NavButton />', () => {
             />, div);
     });
 
+    /** Just an example, normally props should not be tested, as they
+        are already covered by PropTypes. */
     it('allows us to set props', () => {
         const onClick = () => console.log('onClick() fired');
         const wrapper = mount(
@@ -28,7 +43,7 @@ describe('<NavButton />', () => {
         expect(wrapper.props().propOne).toEqual('bonka');
     });
 
-    it('simulates click events', () => {
+    it('handles click events', () => {
         NavButton.prototype.onClick = jest.fn();    
         const mockClick = NavButton.prototype.onClick;
         const wrapper = mount((
