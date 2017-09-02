@@ -55,6 +55,7 @@ module.exports = {
     _zeroFill: zeroFill,
     _randomDateBetween: randomDateBetween,
     _minValues: minValues,
+    _maxValues: maxValues,
     randomDate: randomDate,
     getDateObj: getDateObj,
     formatDate: formatDate,

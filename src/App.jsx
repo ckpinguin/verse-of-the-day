@@ -9,7 +9,6 @@ import './App.css';
 import PreCacheImg from './shared/PreCacheImg';
 import { randomDate, formatDate, getDateWithChangedDays } from './shared/DateHelper';
 import Show from './components/Show';
-import { Dummy } from './components/ToggleDisplay';
 import Title from './components/Title';
 import DateNavigator from './components/DateNavigator';
 import ImageView from './components/ImageView';
@@ -48,7 +47,7 @@ export default class App extends Component {
     getImgUrl() {
         const formattedDate = formatDate(this.state.date, '-');
         const url = this.urlBase + formattedDate + '.png';
-        const urlNext = this.urlBase + formatDate(this.state.date, '-');
+        const urlNext = this.urlBase + formatDate(this.state.date, '-'); // eslint-disable-line no-unused-vars
         return url;
     }
 

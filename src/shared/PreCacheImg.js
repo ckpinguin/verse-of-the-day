@@ -7,7 +7,7 @@ PreCacheImg.propTypes = {
 function PreCacheImg(props) {
     const precache = (images) => {
         let image;
-        images.map((img) => {
+        images.map((img) => { // eslint-disable-line array-callback-return
             image = new Image(); // eslint-disable-line no-undef
             image.src = img;
         });
