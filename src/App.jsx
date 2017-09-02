@@ -58,7 +58,7 @@ export default class App extends Component {
             'dayMinus':   ['down', 'left']
         };
         const handlers = {
-            'dayPlus':     () => this.updateDate(getDateWithChangedDays(this.state.date, +1)),
+            'dayPlus':    () => this.updateDate(getDateWithChangedDays(this.state.date, +1)),
             'dayMinus':   () => this.updateDate(getDateWithChangedDays(this.state.date, -1))
         };
         const url = this.getImgUrl();
