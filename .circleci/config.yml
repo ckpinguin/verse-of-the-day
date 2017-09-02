@@ -106,7 +106,6 @@ jobs:
           name: Deploy Master to Heroku
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              # npm run build # done in build job
               git remote -v
               mkdir to_push
               cp Procfile package.json server.js to_push
