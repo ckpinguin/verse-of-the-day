@@ -35,10 +35,6 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
           Our daily bread
         </h2>
       </div>
-      <p>
-        Test 
-        [object Object]
-      </p>
     </div>
   </div>
   <div
@@ -65,6 +61,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
     >
       <button
         className="NavButton fa fa-chevron-left"
+        id={undefined}
         onClick={[Function]}
         style={Object {}}
       />
@@ -79,6 +76,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         >
           <button
             className="NavButton fa fa-arrow-up"
+            id="year_up"
             onClick={[Function]}
             style={Object {}}
           />
@@ -97,6 +95,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
           />
           <button
             className="NavButton fa fa-arrow-down"
+            id="year_down"
             onClick={[Function]}
             style={Object {}}
           />
@@ -108,6 +107,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         >
           <button
             className="NavButton fa fa-arrow-up"
+            id="month_up"
             onClick={[Function]}
             style={Object {}}
           />
@@ -126,6 +126,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
           />
           <button
             className="NavButton fa fa-arrow-down"
+            id="month_down"
             onClick={[Function]}
             style={Object {}}
           />
@@ -137,6 +138,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
         >
           <button
             className="NavButton fa fa-arrow-up"
+            id="day_up"
             onClick={[Function]}
             style={Object {}}
           />
@@ -155,6 +157,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
           />
           <button
             className="NavButton fa fa-arrow-down"
+            id="day_down"
             onClick={[Function]}
             style={Object {}}
           />
@@ -162,6 +165,7 @@ exports[`<App /> did not change UI compared to recorded snapshot 1`] = `
       </div>
       <button
         className="NavButton fa fa-chevron-right"
+        id={undefined}
         onClick={[Function]}
         style={Object {}}
       />

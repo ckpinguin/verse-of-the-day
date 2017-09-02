@@ -6,14 +6,14 @@ import PropTypes from 'prop-types';
  * This component was copied deliberately from https://github.com/ccnokes/react-toggle-display
  */
 ToggleDisplay.propTypes = {
-    hide: PropTypes.bool,
-    show: PropTypes.bool,
-    if: PropTypes.bool
+    hide:   PropTypes.bool,
+    show:   PropTypes.bool,
+    if:     PropTypes.bool
 };
 ToggleDisplay.defaultProps = {
-    hide: false,
-    show: true,
-    if: true
+    hide:   false,
+    show:   true,
+    if:     true
 };
 function ToggleDisplay(props) {
     if (props.if === false) {

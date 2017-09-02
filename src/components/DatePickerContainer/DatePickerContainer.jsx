@@ -7,8 +7,8 @@ import NumberChooser from '../NumberChooser';
 import { getDateObj } from '../../shared/DateHelper';
 
 const propTypes = {
-    date: PropTypes.object.isRequired,
-    onChangeDate: PropTypes.func.isRequired
+    date:           PropTypes.object.isRequired,
+    onChangeDate:   PropTypes.func.isRequired
 };
 class DatePickerContainer extends Component {
     constructor(props) {

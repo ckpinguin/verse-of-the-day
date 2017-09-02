@@ -46,26 +46,29 @@ class NumberChooser extends React.Component {
     }
 
     render() {
+        const { name } = this.props;
         return (
             <div
                 className="NumberChooser-col"
-                name={`NumberChooser_${this.props.name}`}
+                name={`NumberChooser_${name}`}
                 style={ isDebug ? debug.borderStyle : {} }
             >       
                 <NavButton
+                    id={name + '_up'}
                     onClick={this.handleUpClick}
                     icon="fa fa-arrow-up"
                 />
-                <div className="NumberChooser-caption">{this.props.name}</div>
+                <div className="NumberChooser-caption">{name}</div>
                 <input
                     className="NumberChooser-input"
-                    name={this.props.name}
+                    name={name}
                     type="number"
                     value={this.state.value}
                     onChange={this.handleNumberChange}
                     onBlur={this.handleInputBlur}
                 />
                 <NavButton
+                    id={name + '_down'}
                     onClick={this.handleDownClick}
                     icon="fa fa-arrow-down"
                 />

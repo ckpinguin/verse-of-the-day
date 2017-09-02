@@ -10,8 +10,8 @@ Usage example:
 </Show>
 */
 Show.propTypes = {
-    if: PropTypes.bool,
-    children: PropTypes.any.isRequired
+    if:         PropTypes.bool,
+    children:   PropTypes.any.isRequired
 };
 Show.defaultProps = {
     if: true

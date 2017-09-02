@@ -74,8 +74,7 @@ export default class App extends Component {
                     <Show if>
                         <Title
                             value={this.title}
-                        />
-                        <Dummy prop1="one"/>                        
+                        />                       
                     </Show>
                 </div>
                 <div className="App-Main">
