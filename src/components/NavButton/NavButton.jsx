@@ -15,10 +15,9 @@ NavButton.defaultProps = {
 };
 function NavButton({ id, icon, onClick }) {
     return (
-        <button
+        <div
+            className={`NavButton ${icon}`} style={ isDebug ? debug.borderStyle : {} }
             id={id}
-            className={`NavButton ${icon}`}
-            style={ isDebug ? debug.borderStyle : {} }
             onClick={onClick}
         />
     );

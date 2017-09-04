@@ -39,7 +39,7 @@
   grid-row: 2; */
 }
 
-.App-DatePicker {
+.App-Handle {
     grid-area: handle;
     justify-self: center;
     /* align-self: center; */

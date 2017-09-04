@@ -8,7 +8,6 @@ import './App.css';
 
 import PreCacheImg from './shared/PreCacheImg';
 import { randomDate, formatDate, getDateWithChangedDays } from './shared/DateHelper';
-import Show from './components/Show';
 import Title from './components/Title';
 import DateNavigator from './components/DateNavigator';
 import ImageView from './components/ImageView';
@@ -19,16 +18,18 @@ export default class App extends Component {
     static bibleServerAPIKey = 'ad9b36e57ef40242a89170d6f54322c68d6ed86b';
 
     static propTypes = {
-        date:   PropTypes.object
+        date:       PropTypes.object,
+        title:      PropTypes.string,
+        urlBase:    PropTypes.string
     }
     static defaultProps = {
-        date:   randomDate()
+        date:       randomDate(),
+        title:      'Our daily bread',
+        urlBase:    'https://logos.com/media/VerseOfTheDay/768x432/' 
     }
     
     constructor(props) {
         super(props);
-        this.title = 'Our daily bread';
-        this.urlBase = 'https://logos.com/media/VerseOfTheDay/768x432/';
         this.state = {
             date: props.date 
         };
@@ -46,11 +47,10 @@ export default class App extends Component {
   
     getImgUrl() {
         const formattedDate = formatDate(this.state.date, '-');
-        const url = this.urlBase + formattedDate + '.png';
-        const urlNext = this.urlBase + formatDate(this.state.date, '-'); // eslint-disable-line no-unused-vars
+        const url = this.props.urlBase + formattedDate + '.png';
+        const urlNext = this.props.urlBase + formatDate(this.state.date, '-'); // eslint-disable-line no-unused-vars
         return url;
     }
-
 
     render() {
         // TODO: Make the standard up/down key binding work again in subcomponent NumberChooser
@@ -73,11 +73,9 @@ export default class App extends Component {
                 style={ isDebug ? debug.borderStyle : {} }
             >
                 <div className="App-Title">
-                    <Show if>
-                        <Title
-                            value={this.title}
-                        />                       
-                    </Show>
+                    <Title
+                        value={this.props.title}
+                    />                       
                 </div>
                 <div className="App-Main">
                     <PreCacheImg
@@ -85,18 +83,17 @@ export default class App extends Component {
                             url,
                         ]}
                     /> 
-                    <Show if>
-                        <ImageView
-                            url={url}
-                        />
-                    </Show>
+                    <ImageView
+                        url={url}
+                    />
                 </div>
-                <div className="App-DatePicker">
+                <div className="App-Handle">
                     <DateNavigator
                         date={this.state.date}
                         onChangeDate={this.updateDate}
                     />
                 </div>
+                <div className="App-Footer" />>
             </HotKeys>
         );
     }

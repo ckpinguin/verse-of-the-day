@@ -23,13 +23,14 @@ function Show(props) {
 
     const style = {};
     // style.display = 'none';
-    
+
     return (
         <div>
             {React.Children.map(props.children, (child, i) => {
                 return React.cloneElement(child, { style: {style} });
             })}
         </div>
-    );
+    )
+    
 }
 export default Show;
