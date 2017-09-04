@@ -75,13 +75,16 @@ describe('App', () => {
         expect(div.length).toBe(1);
     });
     describe('the rendered `.App-Title` div', () => {
-        const div = () => appShallow().find('div .App-Title');
+        const div = () => app().find('div .App-Title');
 
-        it('contains everything else that gets rendered', () => {    
+        it('contains everything else that gets rendered', () => {  
+            // const div = app().find('div .App-Title'); // This hangs!
+            const div = appShallow().find('div .App-Title');            
+            
             // When using .find, enzyme arranges the nodes in order such
             // that the outermost node is first in the list. So we can
             // use .first() to get the outermost div.
-            const wrappingDiv = div().first();
+            const wrappingDiv = div.find('div .App-Title').first();
             // console.log(divs.first().debug());
             // console.log(appShallow().childAt(1).debug());
             // Enzyme omits the outermost node when using the .children()
@@ -91,10 +94,12 @@ describe('App', () => {
             expect(wrappingDiv).toEqual(appShallow().childAt(0));
         });
         it('always renders a `Title`', () => {
-
+            expect(div().find(Title).length).toBe(1);
         });
-        it('receives `title` prop', () => {
-            
+        it('`Title` receives `title` prop', () => {
+            const title = (div().find(Title));
+            expect(Object.keys(title.props()).length).toBe(1);
+            expect(title.props().value).toBe('Our daily bread');
         });
     });
 
@@ -103,11 +108,15 @@ describe('App', () => {
         expect(div.length).toBe(1);
     });
     describe('the rendered `.App-Main` div', () => {
-        const div = () => appShallow().find('div .App-Main');
+        const div = () => app().find('div .App-Main');
         
         it('contains everything else that gets rendered', () => {
+            const div = appShallow().find('div .App-Main');
             const wrappingDiv = div.first();
             expect(wrappingDiv).toEqual(appShallow().childAt(1));
+        });
+        it('always renders a `ImageView`', () => {
+            expect(div().find(ImageView).length).toBe(1);
         });
     });
 
@@ -116,14 +125,29 @@ describe('App', () => {
         expect(div.length).toBe(1);
     });
     describe('the rendered `.App-Handle` div', () => {
-        const div = () =>  appShallow().find('div .App-Handle');
+        const div = () => app().find('div .App-Handle');
 
         it('contains everything else that gets rendered', () => {
-            const wrappingDiv = div().first();
+            const div = appShallow().find('div .App-Handle');
+            const wrappingDiv = div.first();
             expect(wrappingDiv).toEqual(appShallow().childAt(2));
         });
         it('always renders a `DateNavigator`', () => {
             expect(div().find(DateNavigator).length).toBe(1);
+        });
+        it('`DateNavigator` receives 2 props', () => {
+            const dateNav = (div().find(DateNavigator));
+            expect(Object.keys(dateNav.props()).length).toBe(2);
+        });
+        it('`DateNavigator` receives `date` prop', () => {
+            const dateNav = (div().find(DateNavigator));
+            expect(dateNav.props().date).toBe(props.date);
+        });
+        it('`DateNavigator` receives `onChangeDate` prop', () => {
+            const dateNav = (div().find(DateNavigator));
+            expect(dateNav.props().onChangeDate).toBeDefined;
+            expect(dateNav.props().onChangeDate).toBe(App.propTypes.updateDate);
+            
         });
     });
 
@@ -135,7 +159,8 @@ describe('App', () => {
         const div = () => app().find('div .App-Footer');
         
         it('contains everything else that gets rendered', () => {
-            const wrappingDiv = div().first();
+            const div = appShallow().find('div .App-Footer');
+            const wrappingDiv = div.first();            
             expect(wrappingDiv).toEqual(appShallow().childAt(3));
         });
     });
