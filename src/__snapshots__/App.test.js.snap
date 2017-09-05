@@ -172,6 +172,5 @@ exports[`App did not change UI compared to recorded snapshot 1`] = `
   <div
     className="App-Footer"
   />
-  &gt;
 </hotkeys>
 `;

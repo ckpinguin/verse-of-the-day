@@ -7,20 +7,26 @@ import { shallow, mount } from 'enzyme';
 import NavButton from '.';
 
 describe('NavButton', () => {
-
     let props;
     let mountedNavButton;
-    const onClick=() => {};
-    const navButtonJSX = <NavButton {...props} />;
+    let shallowNavButton;
     const navButton = () => {
         if (!mountedNavButton) {
             mountedNavButton = mount(
-                navButtonJSX
+                <NavButton {...props} />
             );
         }
         return mountedNavButton;
     };
-    const shallowRender = (props) => shallow(navButtonJSX);
+    const navButtonShallow = () => {
+        if (!shallowNavButton) {
+            shallowNavButton = shallow(
+                <NavButton {...props} />
+            );
+        }
+        return shallowNavButton;
+    };
+    const onClick=() => {};
     
     beforeEach(() => {
         props = {
@@ -33,11 +39,11 @@ describe('NavButton', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
         ReactDOM.render(
-            navButtonJSX, div);
+            <NavButton {...props} />, div);
     });
 
     it('renders shallow', () => {
-        shallowRender(props);
+        navButtonShallow(props);
     });
 
     /** Just an example, normally props should not be tested, as they
@@ -55,7 +61,7 @@ describe('NavButton', () => {
     }); */
 
     it('always renders a div', () => {
-        const renderedTag = navButton().find('NavButton');
+        const renderedTag = navButton(props).find('NavButton');
         expect(renderedTag.length).toBe(1);
     });
 
@@ -63,7 +69,7 @@ describe('NavButton', () => {
         NavButton.prototype.onClick = jest.fn();    
         const mockClick = NavButton.prototype.onClick;
         const wrapper = mount((
-            navButtonJSX
+            <NavButton {...props }/
         ));
         wrapper.find('button').simulate('click');
         expect(mockClick).toHaveBeenCalled();
