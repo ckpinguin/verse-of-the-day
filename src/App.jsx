@@ -44,11 +44,17 @@ export default class App extends Component {
         });
     }
   
-    getImgUrl() {
-        const formattedDate = formatDate(this.state.date, '-');
+    getImgUrl(date) {
+        const formattedDate = formatDate(date, '-');
         const url = this.props.urlBase + formattedDate + '.png';
-        const urlNext = this.props.urlBase + formatDate(this.state.date, '-'); // eslint-disable-line no-unused-vars
+        // const urlNext = this.props.urlBase + formatDate(.date, '-'); // eslint-disable-line no-unused-vars
         return url;
+    }
+    getImgUrlList(date) {
+        const url = this.getImgUrl(date);
+        const url1 = this.getImgUrl(new Date(date.getTime() - 1 * 86400000 ));
+        const url2 = this.getImgUrl(new Date(date.getTime() + 1 * 86400000 ));
+        return [url, url1, url2];
     }
 
     render() {
@@ -62,7 +68,8 @@ export default class App extends Component {
             'dayMinus':   () => this.updateDate(getDateWithChangedDays(this.state.date, -1)),
             'mouseWheel': (e) => e.deltaY > 0 ? handlers.dayMinus() : handlers.dayPlus()
         };
-        const url = this.getImgUrl();
+        const url = this.getImgUrl(this.state.date);
+        const urls = this.getImgUrlList(this.state.date);
         return (  
             <HotKeys
                 onWheel={handlers.mouseWheel}
@@ -79,7 +86,7 @@ export default class App extends Component {
                 <div className="App-Main">
                     <PreCacheImg
                         images={[
-                            url,
+                            urls,
                         ]}
                     /> 
                     <ImageView

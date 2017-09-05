@@ -152,9 +152,12 @@ describe('App', () => {
             // We take the exact url here instead of duplicating the
             // logic from App.jsx (that would make the test more brittle)
             const url = 'https://logos.com/media/VerseOfTheDay/768x432/2017-06-12.png';
+            const url1 = 'https://logos.com/media/VerseOfTheDay/768x432/2017-06-11.png';
+            const url2 = 'https://logos.com/media/VerseOfTheDay/768x432/2017-06-13.png'
+            const images = [ url, url1, url2];
             const precacheImg = (div().find(PreCacheImg));
             // use toEqual for arrays (not `toBe` which uses ===)
-            expect(precacheImg.props().images).toEqual([url]);
+            expect(precacheImg.props().images).toEqual([images]);
         });
     });
 
