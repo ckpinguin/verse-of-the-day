@@ -13,7 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # About
 
 This is my first useful React project, that can also be used as blueprint. It even includes rudimentary top-level tests (component tests will follow God willing). 
-The Logos software for biblical studies (©Faithlife) has an excellent resource of illustrated bible-verses. I did not find any browsable resource of them, so I decided to build one. It is precaching a bit (not yet configurable), so slow mousewheeling should be relatively smooth.
+The Logos software for biblical studies (©Faithlife) has an excellent resource of illustrated bible-verses. I did not find any browsable resource of them, so I decided to build one. It is precaching a bit, so slow mousewheeling should be relatively smooth.
 
 # Available Scripts
 
