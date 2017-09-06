@@ -8,9 +8,7 @@ import './App.css';
 
 import { PreCacheImg } from './shared';
 import { randomDate, formatDate, getDateWithChangedDays } from './shared/DateHelper';
-import Title from './components/Title';
-import DateNavigator from './components/DateNavigator';
-import ImageView from './components/ImageView';
+import { Title, DateNavigator, ImageView} from './components';
 
 export default class App extends Component {
     // API-Key for bibleserver.com API with https://our-daily-bread.herokuapp.com/
