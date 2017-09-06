@@ -52,10 +52,10 @@ export default class App extends Component {
     }
     getPreloadImgList(date, count) {
         const urls = [];
-        let i;
-        for (i=0; i<count; i+=2) {
-            urls[i] = this.getImgUrl(new Date(date.getTime() - i * 86400000 ));
-            urls[i+1] = this.getImgUrl(new Date(date.getTime() + i * 86400000 ));
+        let i, j;
+        for (i=0, j=1; i<count; i+=2, j++) {
+            urls[i] = this.getImgUrl(new Date(date.getTime() - j * 86400000 ));
+            urls[i+1] = this.getImgUrl(new Date(date.getTime() + j * 86400000 ));
         }
         return urls;
     }

@@ -151,13 +151,17 @@ describe('App', () => {
         it('`PreCacheImg` receives `images` prop', () => {
             // We take the exact url here instead of duplicating the
             // logic from App.jsx (that would make the test more brittle)
-            const url = 'https://logos.com/media/VerseOfTheDay/768x432/2017-06-12.png';
-            const url1 = 'https://logos.com/media/VerseOfTheDay/768x432/2017-06-11.png';
-            const url2 = 'https://logos.com/media/VerseOfTheDay/768x432/2017-06-13.png'
-            const images = [url, url1, url2];
+            const urls =[
+                'https://logos.com/media/VerseOfTheDay/768x432/2017-06-11.png',
+                'https://logos.com/media/VerseOfTheDay/768x432/2017-06-13.png',
+                'https://logos.com/media/VerseOfTheDay/768x432/2017-06-10.png',
+                'https://logos.com/media/VerseOfTheDay/768x432/2017-06-14.png',
+                'https://logos.com/media/VerseOfTheDay/768x432/2017-06-09.png',
+                'https://logos.com/media/VerseOfTheDay/768x432/2017-06-15.png'
+            ];
             const precacheImg = (div().find(PreCacheImg));
             // use toEqual for arrays (not `toBe` which uses ===)
-            expect(precacheImg.props().images).toEqual([images]);
+            expect(precacheImg.props().images).toEqual(urls);
         });
     });
 
