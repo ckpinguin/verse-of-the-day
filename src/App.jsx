@@ -50,11 +50,14 @@ export default class App extends Component {
         // const urlNext = this.props.urlBase + formatDate(.date, '-'); // eslint-disable-line no-unused-vars
         return url;
     }
-    getImgUrlList(date) {
-        const url = this.getImgUrl(date);
-        const url1 = this.getImgUrl(new Date(date.getTime() - 1 * 86400000 ));
-        const url2 = this.getImgUrl(new Date(date.getTime() + 1 * 86400000 ));
-        return [url, url1, url2];
+    getPreloadImgList(date, count) {
+        const urls = [];
+        let i;
+        for (i=0; i<count; i+=2) {
+            urls[i] = this.getImgUrl(new Date(date.getTime() - i * 86400000 ));
+            urls[i+1] = this.getImgUrl(new Date(date.getTime() + i * 86400000 ));
+        }
+        return urls;
     }
 
     render() {
@@ -69,7 +72,7 @@ export default class App extends Component {
             'mouseWheel': (e) => e.deltaY > 0 ? handlers.dayMinus() : handlers.dayPlus()
         };
         const url = this.getImgUrl(this.state.date);
-        const urls = this.getImgUrlList(this.state.date);
+        const urls = this.getPreloadImgList(this.state.date, 5);
         return (  
             <HotKeys
                 onWheel={handlers.mouseWheel}
@@ -84,11 +87,11 @@ export default class App extends Component {
                     />                       
                 </div>
                 <div className="App-Main">
-                    <PreCacheImg
-                        images={urls}
-                    /> 
                     <ImageView
                         url={url}
+                    />
+                    <PreCacheImg
+                        images={urls}
                     />
                 </div>
                 <div className="App-Handle">
