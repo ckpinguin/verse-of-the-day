@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Show /> did not change UI compared to recorded snapshot 1`] = `
+<div>
+  <div
+    id="showme"
+    style={Object {}}
+  />
+</div>
+`;

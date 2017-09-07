@@ -1,15 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-// import ReactTestUtils from 'react-dom/test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 import { shallow, mount } from 'enzyme'; 
-// import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer';
 
 import NavButton from '.';
 
-describe('NavButton', () => {
+describe('<NavButton />'    , () => {
     let props;
     let mountedNavButton;
     let shallowNavButton;
+    const onClick = jest.fn();    
     const navButton = () => {
         if (!mountedNavButton) {
             mountedNavButton = mount(
@@ -26,53 +26,49 @@ describe('NavButton', () => {
         }
         return shallowNavButton;
     };
-    const onClick=() => {};
-    
+        
     beforeEach(() => {
+        // App = require('./App').default;        
         props = {
-            onClick: onClick,
-            icon: 'fa fa-arrow-up'
+            icon: 'fa fa-question',
+            onClick: onClick
         };
         mountedNavButton = undefined;
+        shallowNavButton = undefined;
     });
-
+    
     it('renders without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(
-            <NavButton {...props} />, div);
+        ReactTestUtils.renderIntoDocument(<NavButton {...props} />);
     });
 
     it('renders shallow', () => {
-        navButtonShallow(props);
+        navButtonShallow();
     });
 
-    /** Just an example, normally props should not be tested, as they
-        are already covered by PropTypes. */
-    /*     it('allows us to set props', () => {
-        const onClick = () => console.log('onClick() fired');
-        const wrapper = mount(
-            <NavButton
-                onClick={onClick}
-                propOne="foo"
-            />);
-        expect(wrapper.props().propOne).toEqual('foo');
-        wrapper.setProps({ propOne: 'bonka' });
-        expect(wrapper.props().propOne).toEqual('bonka');
-    }); */
-
-    it('always renders a div', () => {
-        const renderedTag = navButton(props).find('NavButton');
-        expect(renderedTag.length).toBe(1);
+    it('mounts successfully (full DOM rendering)', () => {
+        navButton();
     });
 
-/*     it('handles click events', () => {
-        NavButton.prototype.onClick = jest.fn();    
-        const mockClick = NavButton.prototype.onClick;
-        const wrapper = mount((
-            <NavButton {...props }/
-        ));
-        wrapper.find('button').simulate('click');
-        expect(mockClick).toHaveBeenCalled();
-    }); */
+    it('allows us to set props', () => {
+        const wrapper = navButton();
+        expect(wrapper.props().icon).toEqual('fa fa-question');
+        wrapper.setProps({ icon: 'bonka' });
+        expect(wrapper.props().icon).toEqual('bonka');
+    });
 
+    it('always renders exactly one div', () => {
+        const divs = navButtonShallow().find('div'); // shallow goes only 1 level deep
+        expect(divs.length).toBe(1);
+    });
+
+    it('outputs the correct className for the div', () => {
+        const div = navButtonShallow().find('div');
+        expect(div.node.props.className).toBe('NavButton fa fa-question');
+    });
+
+    it('did not change UI compared to recorded snapshot', () => {
+        const component = renderer.create(<NavButton {...props} />);
+        const tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
 });
