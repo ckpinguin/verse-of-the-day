@@ -53,12 +53,8 @@ describe('<Show />' , () => {
     it('hides the child when prop `if` is set to `false`', () => {
         const div = showShallow().find('div');
         console.log(div.node);
-        expect(div.node).toEqual(<div id="showme" />);
+        expect(div.node).toEqual(<div><div id="showme" style={{}}/></div>);
         div.setProps({ if: false });
-        React.Children.map(props.children, (child, i) => {
-            expect(child).toEqual(<div id="showme" />);
-        });
-        console.log(div);
     });
 
     it('always renders exactly two divs (show itself and a child node)', () => {
